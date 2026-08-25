@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAGNIK MANDAL — Cybersecurity & CS Engineering Portfolio</title>
+  <meta name="description" content="Personal cybersecurity portfolio of Sagnik Mandal. Learning today. Securing tomorrow. Computer Science Engineering student passionate about cybersecurity, Linux, Python, and networking.">
+  
+  <!-- Google Fonts: Syne for display headings, Plus Jakarta Sans for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Global Matrix Code Rain Canvas Layer (Subtle Baseline) -->
+  <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+
+  <!-- CRT Scanline Filter Overlay -->
+  <div class="scanline-overlay" aria-hidden="true"></div>
+
+  <!-- Top Scroll Progress Indicator Bar -->
+  <div id="scroll-progress" class="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Tactical Reticle Custom Cursor -->
+  <div class="cursor-dot" data-cursor-dot aria-hidden="true"></div>
+  <div class="cursor-outline" data-cursor-outline aria-hidden="true"></div>
+
+  <!-- Sticky Main Navigation Header -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-logo" aria-label="Sagnik Mandal Home Page">
+        <span class="logo-text">[SAGNIK</span><span class="logo-accent">::SEC]</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link">./Home</a></li>
+          <li><a href="#about" class="nav-link">./About</a></li>
+          <li><a href="#achievements" class="nav-link">./Achievements</a></li>
+          <li><a href="#skills" class="nav-link">./Skills</a></li>
+          <li><a href="#projects" class="nav-link">./Projects</a></li>
+          <li><a href="#contact" class="nav-link">./Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- In-Memory Light/Dark Theme Switcher Button -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light or dark color theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <!-- Mobile Navigation Hamburger Menu Toggle Button -->
+        <button id="hamburger" class="hamburger-btn" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Home / Hero Section: Main Landing Page with Glitch Animated Capitalized Title & Interactive Terminal CLI -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Text & CTA Column -->
+          <div class="hero-content">
+            <div class="hero-badge reveal-on-scroll">
+              <span class="badge-dot"></span> SYSTEM STATUS: ONLINE // LEARNING TODAY. SECURING TOMORROW.
+            </div>
+
+            <!-- Syne Display Font Capitalized Hero Title with Glitch Animation -->
+            <h1 class="hero-title reveal-on-scroll">
+              I AM <span class="text-cyber-green glitch-text" data-text="SAGNIK MANDAL">SAGNIK MANDAL</span>
+            </h1>
+
+            <h2 class="hero-subtitle reveal-on-scroll">
+              I explore <span id="typing-text" class="typing-highlight"></span><span class="typing-cursor">|</span>
+            </h2>
+
+            <p class="hero-pitch reveal-on-scroll">
+              Curious and ambitious Computer Science student exploring technology, networking, Linux, programming, and security architecture behind the scenes.
+            </p>
+
+            <div class="hero-cta-group reveal-on-scroll">
+              <a href="#projects" class="btn btn-primary magnetic-btn">
+                <span>Explore Security Labs</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+
+              <!-- Red Solid Button: WHO AM I? -->
+              <a href="https://www.linkedin.com/in/sagnik-mandal-880411331/" class="btn btn-danger magnetic-btn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile - WHO AM I?">
+                <span>WHO AM I?</span>
+              </a>
+
+              <a href="#contact" class="btn btn-outline magnetic-btn">
+                <span>Initiate Contact</span>
+              </a>
+            </div>
+
+            <!-- Animated Stats Grid -->
+            <div class="hero-stats-grid reveal-on-scroll">
+              <div class="stat-card">
+                <div class="stat-number-wrapper">
+                  <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
+                </div>
+                <span class="stat-label">Focus Areas</span>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number-wrapper">
+                  <span class="stat-number" data-target="2030">0</span>
+                </div>
+                <span class="stat-label">Grad Year</span>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number-wrapper">
+                  <span class="stat-number" data-target="100">0</span><span class="stat-plus">%</span>
+                </div>
+                <span class="stat-label">Security Focus</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Terminal CLI Window Column with Animated Extra-Large "TRY THIS ↴" Callout Arrow & Clickable Command Chips -->
+          <div class="hero-terminal-col">
+            
+            <!-- Animated Arrow Callout Indicator -->
+            <div class="terminal-try-hint reveal-on-scroll" id="terminal-hint" title="Click to focus terminal prompt">
+              <span class="try-hint-badge">⚡ INTERACTIVE CLI</span>
+              <span class="try-hint-arrow">TRY THIS ↴</span>
+            </div>
+
+            <div class="terminal-window reveal-on-scroll" id="terminal-window-el">
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <span class="terminal-title">root@sagnik-sec-shell:~</span>
+              </div>
+              <div class="terminal-body" id="terminal-body">
+                <div class="terminal-line text-cyber-green">[SYSTEM BOOT COMPLETE // SHELL INITIALIZED]</div>
+                <div class="terminal-line text-muted">Click any command chip below or type 1-letter shortcuts (h, a, s, p, c, w):</div>
+                
+                <!-- Quick Clickable Command Chips for Instant One-Click Execution -->
+                <div class="terminal-quick-cmds">
+                  <button type="button" class="cmd-chip" data-cmd="help">help [h]</button>
+                  <button type="button" class="cmd-chip" data-cmd="about">about [a]</button>
+                  <button type="button" class="cmd-chip" data-cmd="skills">skills [s]</button>
+                  <button type="button" class="cmd-chip" data-cmd="projects">projects [p]</button>
+                  <button type="button" class="cmd-chip" data-cmd="achievements">achievements [m]</button>
+                  <button type="button" class="cmd-chip" data-cmd="contact">contact [c]</button>
+                  <button type="button" class="cmd-chip" data-cmd="whoami">whoami [w]</button>
+                  <button type="button" class="cmd-chip" data-cmd="clear">clear [cls]</button>
+                </div>
+
+                <!-- Dynamic Logs Container -->
+                <div id="terminal-logs"></div>
+
+                <div class="terminal-input-line">
+                  <span class="terminal-prompt">root@sagnik-sec:~$</span>
+                  <input type="text" id="terminal-input" class="terminal-input" placeholder="click chip or type 'h'..." autocomplete="off">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section: Biography Overview & Profile Card featuring Clean Sagnik Mandal Photo Frame -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-tag font-mono">// 01. SEC_PROFILE // ABOUT_US</span>
+          <h2 class="section-title">Curious by nature. Tech-driven by passion. Security-focused.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-content reveal-on-scroll">
+            <p class="about-text">
+              I’m a curious and ambitious Computer Science student with a growing passion for technology and cybersecurity. I enjoy exploring how computers, networks, Linux, programming, and security work behind the scenes.
+            </p>
+            <p class="about-text">
+              I’m currently building my foundations in computer science and developing my skills step by step, with the long-term goal of pursuing a career in cybersecurity. I believe in learning by doing, asking questions, experimenting with new technologies, and continuously improving.
+            </p>
+            <div class="about-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">🎯</span>
+                <div class="highlight-text">
+                  <strong>Career Goal</strong>
+                  <span>To become a skilled cybersecurity professional by developing strong foundations in CS, programming, Linux, networking, and practical security.</span>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🛡️</span>
+                <div class="highlight-text">
+                  <strong>Personal Brand Statement</strong>
+                  <span>Curious. Technical. Persistent. Learning. Security-focused.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Card featuring Clean High-Definition Sagnik Mandal Photo -->
+          <div class="about-card-wrapper reveal-on-scroll">
+            <div class="about-glass-card">
+              <div class="card-avatar">
+                <div class="avatar-photo-frame clean-photo-frame">
+                  <img src="sagnik.jpg" alt="Sagnik Mandal Profile Photo" class="profile-photo clean-photo">
+                </div>
+              </div>
+              <h3 class="card-name">SAGNIK MANDAL</h3>
+              <p class="card-role">B.Tech CS Engineering Student</p>
+              <div class="card-details">
+                <div class="detail-row">
+                  <span class="detail-label">INSTITUTE:</span>
+                  <span class="detail-val">FIEM</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">EMAIL:</span>
+                  <span class="detail-val">mandalsagnik375@gmail.com</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">STATUS:</span>
+                  <span class="detail-val badge-status">SYSTEM_ACTIVE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements Section: CTFs, Competitions & Academic Honors -->
+    <section class="section achievements-section" id="achievements">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-tag font-mono">// 02. MILESTONES // ACHIEVEMENTS</span>
+          <h2 class="section-title">Honors, CTFs & Achievements</h2>
+        </div>
+
+        <div class="achievements-grid">
+          <!-- Achievement 1 -->
+          <div class="achievement-card reveal-on-scroll">
+            <div class="achievement-header">
+              <div class="achievement-badge-icon">🏆</div>
+              <span class="achievement-tag">COMPETITION</span>
+            </div>
+            <h3 class="achievement-title">Portfolio Building Competition Contender</h3>
+            <span class="achievement-date">2026</span>
+            <p class="achievement-desc">
+              Engineered a high-performance, zero-framework vanilla web showcase with matrix canvas rendering, custom terminal CLI, and responsive design systems.
+            </p>
+          </div>
+
+          <!-- Achievement 2 -->
+          <div class="achievement-card reveal-on-scroll">
+            <div class="achievement-header">
+              <div class="achievement-badge-icon">🛡️</div>
+              <span class="achievement-tag">CYBERSECURITY</span>
+            </div>
+            <h3 class="achievement-title">Capture The Flag (CTF) Labs</h3>
+            <span class="achievement-date">Active 2026</span>
+            <p class="achievement-desc">
+              Participating in fundamental CTF challenges, Linux privilege escalation labs, cryptography puzzles, and network packet analysis routines.
+            </p>
+          </div>
+
+          <!-- Achievement 3 -->
+          <div class="achievement-card reveal-on-scroll">
+            <div class="achievement-header">
+              <div class="achievement-badge-icon">⚡</div>
+              <span class="achievement-tag">LINUX & PYTHON</span>
+            </div>
+            <div class="achievement-content">
+              <h3 class="achievement-title">Python & Linux Scripting Track</h3>
+              <span class="achievement-date">2026</span>
+              <p class="achievement-desc">
+                Developed core competencies in Python automation, file I/O, control loops, and Ubuntu/Kali command-line terminal system utilities.
+              </p>
+            </div>
+          </div>
+
+          <!-- Achievement 4 -->
+          <div class="achievement-card reveal-on-scroll">
+            <div class="achievement-header">
+              <div class="achievement-badge-icon">🎓</div>
+              <span class="achievement-tag">ACADEMIC</span>
+            </div>
+            <div class="achievement-content">
+              <h3 class="achievement-title">FIEM CS Engineering Batch</h3>
+              <span class="achievement-date">2026 — 2030</span>
+              <p class="achievement-desc">
+                Consistently pursuing high standards in Computer Science Engineering core curriculum, algorithms, operating systems, and networking.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section: Technical Expertise Grid & Animated Progress Bars -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-tag font-mono">// 03. SKILL_MATRIX // PROFICIENCY</span>
+          <h2 class="section-title">Technical Foundations & Security Capabilities</h2>
+        </div>
+
+        <div class="skills-wrapper">
+          <!-- Animated Progress Bars Grid -->
+          <div class="skills-progress-grid reveal-on-scroll">
+            <h3 class="skills-subtitle">Core Skill Vectors</h3>
+            
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Computer Science Fundamentals</span>
+                <span class="skill-percent">80%</span>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" data-progress="80"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Linux (Ubuntu & Kali Linux)</span>
+                <span class="skill-percent">75%</span>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" data-progress="75"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Cybersecurity Fundamentals</span>
+                <span class="skill-percent">75%</span>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" data-progress="75"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Python (Loops, Functions, I/O)</span>
+                <span class="skill-percent">70%</span>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" data-progress="70"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Basic Networking Concepts</span>
+                <span class="skill-percent">65%</span>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" data-progress="65"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Skill Chips Category Grid -->
+          <div class="skills-chips-block reveal-on-scroll">
+            <h3 class="skills-subtitle">Security Toolset & Environment</h3>
+            <div class="chips-grid">
+              <span class="skill-chip">Python 3</span>
+              <span class="skill-chip">Ubuntu Linux</span>
+              <span class="skill-chip">Kali Linux</span>
+              <span class="skill-chip">Networking (TCP/IP)</span>
+              <span class="skill-chip">Cybersecurity</span>
+              <span class="skill-chip">Linux Terminal / Shell</span>
+              <span class="skill-chip">Problem Solving</span>
+              <span class="skill-chip">Security Auditing</span>
+              <span class="skill-chip">Git & GitHub</span>
+              <span class="skill-chip">Network Scanning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section (04): Dedicated Matrix Code Rain in Void Space ONLY -->
+    <section class="section projects-section" id="projects">
+      
+      <!-- Dedicated Canvas Layer specifically for Projects Section Void Space -->
+      <canvas id="projects-matrix-canvas" aria-hidden="true"></canvas>
+
+      <div class="container projects-container-relative">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-tag font-mono">// 04. LAB_REPOS // PROJECTS & LABS</span>
+          <h2 class="section-title">Security Explorations & Code Repositories</h2>
+        </div>
+      </div>
+
+      <!-- 2 Running Rows Marquee Container -->
+      <div class="marquee-container reveal-on-scroll">
+        
+        <!-- ROW 1: Running Left -->
+        <div class="marquee-row marquee-row-1">
+          
+          <!-- Card 1 -->
+          <article class="project-card marquee-card">
+            <div class="card-media">
+              <div class="placeholder-graphic bg-graphic-1">
+                <svg viewBox="0 0 100 100" class="graphic-svg" aria-hidden="true">
+                  <path d="M50 15 L85 30 V55 C85 75 50 90 50 90 C50 90 15 75 15 55 V30 Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+              </div>
+              <span class="category-badge">Security</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Network Packet Inspector</h3>
+              <p class="card-description">
+                Python packet inspection script designed to analyze local traffic headers and protocol behavior.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Networking</span>
+                <span class="tech-tag">Sockets</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="project-card marquee-card">
+            <div class="card-media">
+              <div class="placeholder-graphic bg-graphic-2">
+                <svg viewBox="0 0 100 100" class="graphic-svg" aria-hidden="true">
+                  <rect x="20" y="20" width="60" height="60" rx="6" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <polyline points="35,45 45,55 35,65" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <line x1="52" y1="65" x2="65" y2="65" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <span class="category-badge">Linux Lab</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Kali & Ubuntu Security Lab</h3>
+              <p class="card-description">
+                Virtual laboratory environment for command-line navigation, system administration, and network utilities.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Kali Linux</span>
+                <span class="tech-tag">Ubuntu</span>
+                <span class="tech-tag">Bash</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="project-card marquee-card">
+            <div class="card-media">
+              <div class="placeholder-graphic bg-graphic-3">
+                <svg viewBox="0 0 100 100" class="graphic-svg" aria-hidden="true">
+                  <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <path d="M50 20 V50 L70 60" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+              </div>
+              <span class="category-badge">Python</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Cipher & Cryptography Suite</h3>
+              <p class="card-description">
+                Python programs demonstrating classic encryption algorithms, string ciphers, and hash functions.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Python 3</span>
+                <span class="tech-tag">Cryptography</span>
+                <span class="tech-tag">Algorithms</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Duplicate 1 -->
+          <article class="project-card marquee-card">
+            <div class="card-media">
+              <div class="placeholder-graphic bg-graphic-1">
+                <svg viewBox="0 0 100 100" class="graphic-svg" aria-hidden="true">
+                  <path d="M50 15 L85 30 V55 C85 75 50 90 50 90 C50 90 15 75 15 55 V30 Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+              </div>
+              <span class="category-badge">Security</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Network Packet Inspector</h3>
+              <p class="card-description">
+                Python packet inspection script designed to analyze local traffic headers and protocol behavior.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Networking</span>
+                <span class="tech-tag">Sockets</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Duplicate 2 -->
+          <article class="project-card marquee-card">
+            <div class="card-media">
+              <div class="placeholder-graphic bg-graphic-2">
+                <svg viewBox="0 0 100 100" class="graphic-svg" aria-hidden="true">
+                  <rect x="20" y="20" width="60" height="60" rx="6" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <polyline points="35,45 45,55 35,65" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <line x1="52" y1="65" x2="65" y2="65" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <span class="category-badge">Linux Lab</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Kali & Ubuntu Security Lab</h3>
+              <p class="card-description">
+                Virtual laboratory environment for command-line navigation, system administration, and network utilities.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Kali Linux</span>
+                <span class="tech-tag">Ubuntu</span>
+                <span class="tech-tag">Bash</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Duplicate 3 -->
+          <article class="project-card marquee-card">
+            <div class="card-media">
+              <div class="placeholder-graphic bg-graphic-3">
+                <svg viewBox="0 0 100 100" class="graphic-svg" aria-hidden="true">
+                  <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <path d="M50 20 V50 L70 60" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+              </div>
+              <span class="category-badge">Python</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Cipher & Cryptography Suite</h3>
+              <p class="card-description">
+                Python programs demonstrating classic encryption algorithms, string ciphers, and hash functions.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Python 3</span>
+                <span class="tech-tag">Cryptography</span>
+                <span class="tech-tag">Algorithms</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- ROW 2: Running Right -->
+        <div class="marquee-row marquee-row-2">
+          
+          <!-- Card 4 -->
+          <article class="project-card marquee-card">
+            <div class="card-media">
+              <div class="placeholder-graphic bg-graphic-4">
+                <svg viewBox="0 0 100 100" class="graphic-svg" aria-hidden="true">
+                  <rect x="30" y="45" width="40" height="35" rx="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <path d="M38 45 V32 C38 24 62 24 62 32 V45" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+              </div>
+              <span class="category-badge">Security</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Port Scanner & Security Tool</h3>
+              <p class="card-description">
+                Custom script testing open port availability and basic network endpoint security reachability.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Networking</span>
+                <span class="tech-tag">Security</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="project-card marquee-card">
+            <div class="card-media">
+              <div class="placeholder-graphic bg-graphic-5">
+                <svg viewBox="0 0 100 100" class="graphic-svg" aria-hidden="true">
+                  <polygon points="50,15 90,85 10,85" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <line x1="50" y1="40" x2="50" y2="60" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="50" cy="72" r="2" fill="currentColor"/>
+                </svg>
+              </div>
+              <span class="category-badge">Linux</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Linux Hardening Configurations</h3>
+              <p class="card-description">
+                Security documentation and shell setup scripts for enforcing baseline security policy on Ubuntu OS.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Linux</span>
+                <span class="tech-tag">Shell</span>
+                <span class="tech-tag">Hardening</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="project-card marquee-card">
+            <div class="card-media">
+              <div class="placeholder-graphic bg-graphic-6">
+                <svg viewBox="0 0 100 100" class="graphic-svg" aria-hidden="true">
+                  <rect x="25" y="25" width="50" height="50" rx="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <line x1="25" y1="50" x2="75" y2="50" stroke="currentColor" stroke-width="2"/>
+                  <line x1="50" y1="25" x2="50" y2="75" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <span class="category-badge">Python</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">CS Problem Solving Repo</h3>
+              <p class="card-description">
+                Problem-solving code exercises focused on functions, conditionals, loops, and data structures.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">CS Core</span>
+                <span class="tech-tag">Logic</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Duplicate 4 -->
+          <article class="project-card marquee-card">
+            <div class="card-media">
+              <div class="placeholder-graphic bg-graphic-4">
+                <svg viewBox="0 0 100 100" class="graphic-svg" aria-hidden="true">
+                  <rect x="30" y="45" width="40" height="35" rx="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <path d="M38 45 V32 C38 24 62 24 62 32 V45" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+              </div>
+              <span class="category-badge">Security</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Port Scanner & Security Tool</h3>
+              <p class="card-description">
+                Custom script testing open port availability and basic network endpoint security reachability.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Networking</span>
+                <span class="tech-tag">Security</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Duplicate 5 -->
+          <article class="project-card marquee-card">
+            <div class="card-media">
+              <div class="placeholder-graphic bg-graphic-5">
+                <svg viewBox="0 0 100 100" class="graphic-svg" aria-hidden="true">
+                  <polygon points="50,15 90,85 10,85" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <line x1="50" y1="40" x2="50" y2="60" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="50" cy="72" r="2" fill="currentColor"/>
+                </svg>
+              </div>
+              <span class="category-badge">Linux</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Linux Hardening Configurations</h3>
+              <p class="card-description">
+                Security documentation and shell setup scripts for enforcing baseline security policy on Ubuntu OS.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Linux</span>
+                <span class="tech-tag">Shell</span>
+                <span class="tech-tag">Hardening</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Duplicate 6 -->
+          <article class="project-card marquee-card">
+            <div class="card-media">
+              <div class="placeholder-graphic bg-graphic-6">
+                <svg viewBox="0 0 100 100" class="graphic-svg" aria-hidden="true">
+                  <rect x="25" y="25" width="50" height="50" rx="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <line x1="25" y1="50" x2="75" y2="50" stroke="currentColor" stroke-width="2"/>
+                  <line x1="50" y1="25" x2="50" y2="75" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <span class="category-badge">Python</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">CS Problem Solving Repo</h3>
+              <p class="card-description">
+                Problem-solving code exercises focused on functions, conditionals, loops, and data structures.
+              </p>
+              <div class="card-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">CS Core</span>
+                <span class="tech-tag">Logic</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Education Section: Vertical Alternating Timeline -->
+    <section class="section experience-section" id="experience">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-tag font-mono">// 05. ACADEMICS // EDUCATION</span>
+          <h2 class="section-title">Academic Journey & Educational Path</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-line" aria-hidden="true"></div>
+
+          <!-- Timeline Item 1 (Right) -->
+          <div class="timeline-item timeline-right reveal-on-scroll">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-period font-mono">2026 — 2030</span>
+              <h3 class="timeline-role">B.Tech in Computer Science Engineering</h3>
+              <h4 class="timeline-company">Future Institute of Engineering and Management (FIEM)</h4>
+              <p class="timeline-desc">
+                Currently pursuing B.Tech in CSE. Developing strong foundations in computer science core principles, Linux, networking, Python, and cybersecurity.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 (Left) -->
+          <div class="timeline-item timeline-left reveal-on-scroll">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-period font-mono">COMPLETED</span>
+              <h3 class="timeline-role">Higher Secondary Education</h3>
+              <h4 class="timeline-company">Narayana Group of Schools, Newtown</h4>
+              <p class="timeline-desc">
+                Higher Secondary education focused on Science and Mathematics, laying the baseline analytical skills for engineering.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section: Form with Client-Side Validation & Social Icon Links -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-tag font-mono">// 06. ENCRYPTED_CHANNEL // CONTACT</span>
+          <h2 class="section-title">Initiate Contact & Connect</h2>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info & Social Connections -->
+          <div class="contact-info reveal-on-scroll">
+            <h3 class="contact-subtitle">Looking to connect?</h3>
+            <p class="contact-lead">
+              Feel free to connect regarding cybersecurity research, Linux operations, Python projects, or networking discussions.
+            </p>
+
+            <div class="contact-cards-list">
+              <div class="info-card">
+                <span class="info-icon">📧</span>
+                <div class="info-details">
+                  <span class="info-label">DIRECT EMAIL</span>
+                  <a href="mailto:mandalsagnik375@gmail.com" class="info-link">mandalsagnik375@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <span class="info-icon">🎓</span>
+                <div class="info-details">
+                  <span class="info-label">ACADEMICS</span>
+                  <span class="info-val">B.Tech CSE @ FIEM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Icon Links -->
+            <div class="social-links-block">
+              <span class="social-title font-mono">CONNECT:</span>
+              <div class="social-icons">
+                <a href="https://www.linkedin.com/in/sagnik-mandal-880411331/" class="social-btn magnetic-btn" aria-label="LinkedIn Profile" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="mailto:mandalsagnik375@gmail.com" class="social-btn magnetic-btn" aria-label="Email Sagnik" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form with Floating Labels & Inline Validation -->
+          <div class="contact-form-wrapper reveal-on-scroll">
+            <form id="contact-form" class="contact-form" novalidate>
+              
+              <!-- Form Success Feedback Banner -->
+              <div id="form-success" class="form-success-message" aria-live="polite" hidden>
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>[STATUS 200: TRANSMISSION SUCCESSFUL] Message delivered to Sagnik Mandal.</span>
+              </div>
+
+              <!-- Name Field -->
+              <div class="form-group floating-group">
+                <input type="text" id="name" name="name" class="form-input" placeholder=" " required autocomplete="name">
+                <label for="name" class="form-label">[INPUT: FULL_NAME]</label>
+                <span class="error-msg" id="name-error">Please enter your name</span>
+              </div>
+
+              <!-- Email Field -->
+              <div class="form-group floating-group">
+                <input type="email" id="email" name="email" class="form-input" placeholder=" " required autocomplete="email">
+                <label for="email" class="form-label">[INPUT: EMAIL_ADDRESS]</label>
+                <span class="error-msg" id="email-error">Please enter a valid email address</span>
+              </div>
+
+              <!-- Subject Field -->
+              <div class="form-group floating-group">
+                <input type="text" id="subject" name="subject" class="form-input" placeholder=" " required>
+                <label for="subject" class="form-label">[INPUT: SUBJECT_HEADER]</label>
+                <span class="error-msg" id="subject-error">Please enter a subject</span>
+              </div>
+
+              <!-- Message Field -->
+              <div class="form-group floating-group">
+                <textarea id="message" name="message" class="form-input form-textarea" rows="4" placeholder=" " required></textarea>
+                <label for="message" class="form-label">[INPUT: MESSAGE_PAYLOAD]</label>
+                <span class="error-msg" id="message-error">Please enter your message</span>
+              </div>
+
+              <!-- Submit Button with Magnetic Hover & Ripple Effect -->
+              <button type="submit" class="btn btn-primary btn-full magnetic-btn" id="submit-btn">
+                <span>Send Message Payload</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo">
+          <span class="logo-text">[SAGNIK</span><span class="logo-accent">::SEC]</span>
+        </a>
+        <p class="footer-copy">
+          [SYSTEM STATUS: ONLINE] &copy; <span id="footer-year">2026</span> SAGNIK MANDAL. Learning today. Securing tomorrow.
+        </p>
+      </div>
+
+      <!-- Back To Top Button (Appears after 400px scroll) -->
+      <button id="back-to-top" class="back-to-top-btn magnetic-btn" aria-label="Back to top of page">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File Loaded with Defer -->
+  <script src="script.js" defer></script>
+</body>
+</html>
