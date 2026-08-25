@@ -5,10 +5,11 @@
          Added ONE-CLICK Clickable Command Chips & 1-Letter Shortcuts for Terminal.
          Added HIGH-INTENSITY NEON GLOW for all Terminal CLI command output answers.
          Added COMPREHENSIVE MOBILE RESPONSIVE SUITE for 100% Mobile & Touch Compatibility.
+         FIXED SECTION 04 MARQUEE CARDS VISIBILITY & MOBILE RESPONSIVENESS (Removed
+         vignette overlays on mobile so cards are 100% visible, sharp, and interactive).
          Configured ALL interactive cards/tiles to turn RED on hover.
          Integrated clean, high-definition Sagnik Mandal profile photo frame.
-   WHY:  Ensures flawless display, navigation, and usability across all smartphones,
-         tablets, and desktop screens.
+   WHY:  Ensures flawless display, navigation, card visibility, and marquee motion.
    ========================================================================== */
 :root {
   /* Crisp Monochromatic Cyber Palette */
@@ -1143,6 +1144,7 @@ body.light-theme .moon-icon { display: none; }
   position: relative;
   z-index: 1;
   overflow: hidden;
+  padding: 5rem 0;
 }
 
 /* Dedicated Projects Section Matrix Rain Canvas */
@@ -1154,12 +1156,13 @@ body.light-theme .moon-icon { display: none; }
   height: 100%;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.45;
+  opacity: 0.35;
 }
 
 .projects-container-relative {
   position: relative;
-  z-index: 2;
+  z-index: 10;
+  margin-bottom: 2rem;
 }
 
 .marquee-container {
@@ -1168,20 +1171,18 @@ body.light-theme .moon-icon { display: none; }
   gap: 1.8rem;
   overflow: hidden;
   position: relative;
-  width: 100vw;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
   padding: 1.5rem 0;
   z-index: 2;
 }
 
-/* Vignette Masks for Scoped Projects Void Space */
+/* Vignette Masks for Desktop Void Space */
 .marquee-container::before,
 .marquee-container::after {
   content: '';
   position: absolute;
   top: 0;
-  width: 140px;
+  width: 100px;
   height: 100%;
   z-index: 5;
   pointer-events: none;
@@ -1189,12 +1190,12 @@ body.light-theme .moon-icon { display: none; }
 
 .marquee-container::before {
   left: 0;
-  background: linear-gradient(to right, rgba(2, 4, 8, 0.9), rgba(2, 4, 8, 0));
+  background: linear-gradient(to right, rgba(2, 4, 8, 0.95), rgba(2, 4, 8, 0));
 }
 
 .marquee-container::after {
   right: 0;
-  background: linear-gradient(to left, rgba(2, 4, 8, 0.9), rgba(2, 4, 8, 0));
+  background: linear-gradient(to left, rgba(2, 4, 8, 0.95), rgba(2, 4, 8, 0));
 }
 
 .marquee-row {
@@ -1230,21 +1231,21 @@ body.light-theme .moon-icon { display: none; }
   width: 360px;
   flex-shrink: 0;
   position: relative;
-  background: rgba(9, 14, 23, 0.96);
+  background: rgba(9, 14, 23, 0.98);
   backdrop-filter: blur(12px);
-  border: 1px solid var(--border-color-muted);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-card), 0 0 15px rgba(0, 255, 102, 0.15);
   transition: transform var(--transition-normal), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .marquee-card:hover {
   transform: translateY(-6px);
-  border-color: var(--accent-danger);
-  box-shadow: var(--shadow-neon-red);
+  border-color: var(--accent-danger) !important;
+  box-shadow: var(--shadow-neon-red) !important;
 }
 
 .marquee-card:hover .placeholder-graphic {
@@ -1752,14 +1753,79 @@ body.light-theme .moon-icon { display: none; }
     font-size: 16px !important;
   }
 
+  /* Section 04 Mobile Marquee & Card Visibility Fixes */
+  .projects-section {
+    padding: 3.5rem 0;
+  }
+
+  .projects-container-relative {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Remove dark vignette masks on mobile so cards are 100% visible */
+  .marquee-container::before,
+  .marquee-container::after {
+    display: none !important;
+  }
+
+  .marquee-container {
+    width: 100%;
+    left: 0;
+    transform: none;
+    padding: 0.8rem 0;
+    gap: 1.2rem;
+    overflow-x: hidden;
+  }
+
+  .marquee-row {
+    display: flex;
+    gap: 1.2rem;
+    width: max-content;
+  }
+
+  .marquee-row-1 {
+    animation: marquee-left 25s linear infinite;
+  }
+
+  .marquee-row-2 {
+    animation: marquee-right 25s linear infinite;
+  }
+
+  .marquee-card {
+    width: 290px !important;
+    max-width: 82vw;
+    background: rgba(9, 14, 23, 0.98) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 255, 102, 0.2) !important;
+  }
+
+  .card-media {
+    height: 140px;
+  }
+
+  .graphic-svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .card-body {
+    padding: 1.1rem;
+  }
+
+  .card-title {
+    font-size: 1.08rem;
+  }
+
+  .card-description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
   /* Mobile Vertical Timeline */
   .timeline-line { left: 20px; }
   .timeline-item { width: 100%; padding-left: 3.2rem; padding-right: 0; }
   .timeline-left, .timeline-right { left: 0; text-align: left; }
   .timeline-left .timeline-dot, .timeline-right .timeline-dot { left: 13px; right: auto; }
-
-  /* Mobile Marquee Cards */
-  .marquee-card { width: 280px; }
 
   /* Mobile Contact Form */
   .contact-form-wrapper { padding: 1.8rem 1.2rem; }
@@ -1773,7 +1839,7 @@ body.light-theme .moon-icon { display: none; }
   .try-hint-arrow { font-size: 1.3rem; }
   .about-glass-card { padding: 1.8rem 1.2rem; }
   .avatar-photo-frame { width: 130px; height: 130px; }
-  .marquee-card { width: 260px; }
+  .marquee-card { width: 270px !important; }
   .back-to-top-btn { bottom: 1.2rem; right: 1.2rem; }
 }
 
