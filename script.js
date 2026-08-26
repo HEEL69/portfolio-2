@@ -76,10 +76,28 @@ function initMatrixRain() {
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const checkLowPowerMobile = () => {
+    const isMobile = window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 768;
+    const isLowConcurrency = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+    return isMobile || isLowConcurrency;
+  };
+
+  let isLowPower = checkLowPowerMobile();
+  let fontSize = isLowPower ? 24 : 16;
+  let columns = Math.floor(window.innerWidth / fontSize);
+  let rainDrops = Array.from({ length: columns }, () => Math.floor(Math.random() * -50));
+  let animFrameId = null;
+  let lastDrawTime = 0;
 
   const resizeCanvas = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    isLowPower = checkLowPowerMobile();
+    fontSize = isLowPower ? 24 : 16;
+    columns = Math.floor(canvas.width / fontSize);
+    rainDrops = Array.from({ length: columns }, () => Math.floor(Math.random() * -50));
   };
 
   resizeCanvas();
@@ -89,48 +107,64 @@ function initMatrixRain() {
   const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   const alphabet = katakana + latin;
 
-  const fontSize = 16;
-  let columns = Math.floor(canvas.width / fontSize);
-  let rainDrops = Array.from({ length: columns }, () => Math.floor(Math.random() * -50));
-
-  window.addEventListener('resize', () => {
-    columns = Math.floor(canvas.width / fontSize);
-    rainDrops = Array.from({ length: columns }, () => Math.floor(Math.random() * -50));
-  });
-
-  const render = () => {
-    ctx.fillStyle = 'rgba(2, 4, 8, 0.04)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    for (let i = 0; i < rainDrops.length; i++) {
-      const char = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-      const x = i * fontSize;
-      const y = rainDrops[i] * fontSize;
-
-      if (Math.random() > 0.95) {
-        ctx.fillStyle = '#ffffff';
-      } else {
-        ctx.fillStyle = '#00ff66';
-      }
-
-      ctx.font = `${fontSize}px monospace`;
-      ctx.fillText(char, x, y);
-
-      if (y > canvas.height && Math.random() > 0.975) {
-        rainDrops[i] = 0;
-      }
-      rainDrops[i]++;
+  const render = (timestamp) => {
+    if (prefersReducedMotion.matches || document.hidden) {
+      if (prefersReducedMotion.matches) ctx.clearRect(0, 0, canvas.width, canvas.height);
+      return;
     }
 
-    requestAnimationFrame(render);
+    const targetFpsInterval = isLowPower ? 33 : 16; // ~30 FPS on low power/mobile vs ~60 FPS on desktop
+    if (timestamp - lastDrawTime >= targetFpsInterval) {
+      lastDrawTime = timestamp;
+
+      ctx.fillStyle = 'rgba(2, 4, 8, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < rainDrops.length; i++) {
+        const char = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        const x = i * fontSize;
+        const y = rainDrops[i] * fontSize;
+
+        ctx.fillStyle = Math.random() > 0.95 ? '#ffffff' : '#00ff66';
+        ctx.fillText(char, x, y);
+
+        if (y > canvas.height && Math.random() > 0.975) {
+          rainDrops[i] = 0;
+        }
+        rainDrops[i]++;
+      }
+    }
+
+    animFrameId = requestAnimationFrame(render);
   };
 
-  render();
+  // Pause rendering when tab is inactive to save GPU/CPU cycles
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+    } else if (!prefersReducedMotion.matches) {
+      animFrameId = requestAnimationFrame(render);
+    }
+  });
+
+  prefersReducedMotion.addEventListener('change', (e) => {
+    if (e.matches) {
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    } else if (!document.hidden) {
+      animFrameId = requestAnimationFrame(render);
+    }
+  });
+
+  if (!prefersReducedMotion.matches && !document.hidden) {
+    animFrameId = requestAnimationFrame(render);
+  }
 }
 
 
 /* ==========================================================================
-   2B. SCOPED MATRIX RAIN FOR SECTION 04 VOID SPACE ONLY (#projects-matrix-canvas)
+   2B. SCOPED MATRIX RAIN FOR PROJECTS SECTION ONLY (#projects-matrix-canvas)
    ========================================================================== */
 function initProjectsMatrixRain() {
   const canvas = document.getElementById('projects-matrix-canvas');
@@ -138,10 +172,29 @@ function initProjectsMatrixRain() {
   if (!canvas || !projectsSection) return;
 
   const ctx = canvas.getContext('2d');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const checkLowPowerMobile = () => {
+    const isMobile = window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 768;
+    const isLowConcurrency = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+    return isMobile || isLowConcurrency;
+  };
+
+  let isLowPower = checkLowPowerMobile();
+  let fontSize = isLowPower ? 24 : 18;
+  let columns = Math.floor(projectsSection.clientWidth / fontSize);
+  let rainDrops = Array.from({ length: columns }, () => Math.floor(Math.random() * -40));
+  let animFrameId = null;
+  let isIntersecting = false;
+  let lastDrawTime = 0;
 
   const resizeCanvas = () => {
     canvas.width = projectsSection.clientWidth;
     canvas.height = projectsSection.clientHeight;
+    isLowPower = checkLowPowerMobile();
+    fontSize = isLowPower ? 24 : 18;
+    columns = Math.floor(canvas.width / fontSize);
+    rainDrops = Array.from({ length: columns }, () => Math.floor(Math.random() * -40));
   };
 
   resizeCanvas();
@@ -151,43 +204,63 @@ function initProjectsMatrixRain() {
   const latin = '0123456789SEC_LAB';
   const alphabet = katakana + latin;
 
-  const fontSize = 18;
-  let columns = Math.floor(canvas.width / fontSize);
-  let rainDrops = Array.from({ length: columns }, () => Math.floor(Math.random() * -40));
-
-  window.addEventListener('resize', () => {
-    columns = Math.floor(canvas.width / fontSize);
-    rainDrops = Array.from({ length: columns }, () => Math.floor(Math.random() * -40));
-  });
-
-  const render = () => {
-    ctx.fillStyle = 'rgba(2, 4, 8, 0.12)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    for (let i = 0; i < rainDrops.length; i++) {
-      const char = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-      const x = i * fontSize;
-      const y = rainDrops[i] * fontSize;
-
-      if (Math.random() > 0.92) {
-        ctx.fillStyle = '#ffffff';
-      } else {
-        ctx.fillStyle = '#00ff66';
-      }
-
-      ctx.font = `bold ${fontSize}px monospace`;
-      ctx.fillText(char, x, y);
-
-      if (y > canvas.height && Math.random() > 0.975) {
-        rainDrops[i] = 0;
-      }
-      rainDrops[i]++;
+  const render = (timestamp) => {
+    if (prefersReducedMotion.matches || !isIntersecting || document.hidden) {
+      if (prefersReducedMotion.matches) ctx.clearRect(0, 0, canvas.width, canvas.height);
+      return;
     }
 
-    requestAnimationFrame(render);
+    const targetFpsInterval = isLowPower ? 33 : 16;
+    if (timestamp - lastDrawTime >= targetFpsInterval) {
+      lastDrawTime = timestamp;
+
+      ctx.fillStyle = 'rgba(2, 4, 8, 0.12)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.font = `bold ${fontSize}px monospace`;
+
+      for (let i = 0; i < rainDrops.length; i++) {
+        const char = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        const x = i * fontSize;
+        const y = rainDrops[i] * fontSize;
+
+        ctx.fillStyle = Math.random() > 0.92 ? '#ffffff' : '#00ff66';
+        ctx.fillText(char, x, y);
+
+        if (y > canvas.height && Math.random() > 0.975) {
+          rainDrops[i] = 0;
+        }
+        rainDrops[i]++;
+      }
+    }
+
+    animFrameId = requestAnimationFrame(render);
   };
 
-  render();
+  // Pause render loop when section is scrolled off-screen
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      isIntersecting = entry.isIntersecting;
+      if (isIntersecting && !prefersReducedMotion.matches && !document.hidden) {
+        if (!animFrameId) animFrameId = requestAnimationFrame(render);
+      } else {
+        if (animFrameId) {
+          cancelAnimationFrame(animFrameId);
+          animFrameId = null;
+        }
+      }
+    });
+  }, { threshold: 0.05 });
+
+  observer.observe(projectsSection);
+
+  prefersReducedMotion.addEventListener('change', (e) => {
+    if (e.matches) {
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    } else if (isIntersecting && !document.hidden) {
+      animFrameId = requestAnimationFrame(render);
+    }
+  });
 }
 
 
@@ -406,12 +479,18 @@ function initInteractiveTerminal() {
     'clear': 'clear'
   };
 
-  const validCommands = ['help', 'info', 'purpose', 'about', 'skills', 'projects', 'sources', 'audience', 'cadence', 'achievements', 'contact', 'whoami', 'clear'];
+  const validCommands = ['help', 'info', 'purpose', 'about', 'skills', 'projects', 'sources', 'achievements', 'contact', 'whoami', 'clear'];
 
-  // Make "TRY THIS ↴" hint button focus the terminal prompt instantly
+  // Make "TRY THIS ↴" hint button focus the terminal prompt on desktop or execute help on mobile without virtual keyboard popup
   if (terminalHint) {
     terminalHint.addEventListener('click', () => {
-      terminalInput.focus();
+      const isMobile = window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 768;
+      if (isMobile) {
+        executeCommand('help');
+        terminalInput.blur();
+      } else {
+        terminalInput.focus();
+      }
       if (terminalWindowEl) {
         terminalWindowEl.classList.add('focused');
         setTimeout(() => terminalWindowEl.classList.remove('focused'), 2000);
@@ -426,7 +505,12 @@ function initInteractiveTerminal() {
       const rawCmd = chip.getAttribute('data-cmd');
       if (rawCmd) {
         executeCommand(rawCmd);
-        terminalInput.focus();
+        const isMobile = window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 768;
+        if (isMobile) {
+          terminalInput.blur();
+        } else {
+          terminalInput.focus();
+        }
       }
     });
   });
@@ -479,9 +563,7 @@ function initInteractiveTerminal() {
         appendTerminalLine('  about [a]       - Display biography & credentials overview', 'terminal-output-glow');
         appendTerminalLine('  skills [s]      - List core competency vectors & tools', 'terminal-output-glow');
         appendTerminalLine('  projects [p]    - Show security labs & direct post writeups', 'terminal-output-glow');
-        appendTerminalLine('  sources [src]   - List cited framework standards (NIST, OWASP, MITRE)', 'terminal-output-glow');
-        appendTerminalLine('  audience [aud]  - Print target evaluator profiles', 'terminal-output-glow');
-        appendTerminalLine('  cadence [freq]  - Display operational update schedule', 'terminal-output-glow');
+        appendTerminalLine('  sources [src]   - List cited framework standards (NIST, OWASP, MITRE, RFCs)', 'terminal-output-glow');
         appendTerminalLine('  achievements [m]- List author honors & milestones', 'terminal-output-glow');
         appendTerminalLine('  contact [c]     - Display direct contact options', 'terminal-output-glow');
         appendTerminalLine('  whoami [w]      - Print current user identity & status', 'terminal-output-glow');
@@ -499,31 +581,31 @@ function initInteractiveTerminal() {
 
       case 'purpose':
         appendTerminalLine('EXECUTIVE SUMMARY & OVERALL FOCUS:', 'terminal-output-glow');
-        appendTerminalLine('  Core Purpose : Open-source cybersecurity engineering dossier & learning journal.', 'terminal-output-glow');
-        appendTerminalLine('  Mission      : Bridge theoretical CS principles with hands-on threat defense & systems hardening.', 'terminal-output-glow');
-        appendTerminalLine('CONTENT LISTINGS & PILLARS:', 'terminal-output-glow');
-        appendTerminalLine('  [1] Network Protocol Analysis   (Raw Sockets, Wireshark PCAPs, RFC Specs)', 'terminal-output-glow');
-        appendTerminalLine('  [2] Linux Systems Hardening     (Ubuntu/Kali, CIS Benchmarks, POSIX Shell)', 'terminal-output-glow');
-        appendTerminalLine('  [3] Python Security Automation  (Async SYN Scanners, AES/XOR Ciphers)', 'terminal-output-glow');
-        appendTerminalLine('  [4] CTF Defense Operations      (TryHackMe Top 10%, Privilege Escalation POCs)', 'terminal-output-glow');
-        appendTerminalLine('  [5] CS Engineering Core         (Algorithms, Operating Systems, Data Structures)', 'text-cyber-green terminal-output-glow');
+        appendTerminalLine('  Core Purpose : Cybersecurity engineering portfolio & learning journal.', 'terminal-output-glow');
+        appendTerminalLine('  Mission      : Connect theoretical CS fundamentals with practical security skills.', 'terminal-output-glow');
+        appendTerminalLine('CONTENT PILLARS:', 'terminal-output-glow');
+        appendTerminalLine('  [1] Network Protocol Analysis   (Wireshark PCAPs, TCP/IP handshakes)', 'terminal-output-glow');
+        appendTerminalLine('  [2] Linux Systems Administration(Ubuntu/Kali setup, shell scripts)', 'terminal-output-glow');
+        appendTerminalLine('  [3] Python Security Scripting   (Port scanners, AES/XOR ciphers)', 'terminal-output-glow');
+        appendTerminalLine('  [4] CTF Writeups & Practice     (TryHackMe Top 10%, OWASP writeups)', 'terminal-output-glow');
+        appendTerminalLine('  [5] CS Core Fundamentals        (Algorithms, Operating Systems, Data Structures)', 'text-cyber-green terminal-output-glow');
         break;
 
       case 'about':
-        appendTerminalLine('AUTHOR PROFILE & QUALIFICATIONS SUMMARY:', 'terminal-output-glow');
-        appendTerminalLine('  Name        : Sagnik Mandal | B.Tech CS Engineering Candidate @ FIEM (2026-2030)', 'terminal-output-glow');
-        appendTerminalLine('  Specialty   : Linux Kernel Systems, Python Security Automation & TCP/IP Sniffing', 'terminal-output-glow');
-        appendTerminalLine('  Credentials : Google Cybersecurity Pathway, Cisco TCP/IP Routing, LPI Linux Essentials', 'terminal-output-glow');
-        appendTerminalLine('  CTF Status  : Top 10% Global Rank on TryHackMe (50+ Machines Solved)', 'text-cyber-green terminal-output-glow');
+        appendTerminalLine('AUTHOR PROFILE SUMMARY:', 'terminal-output-glow');
+        appendTerminalLine('  Name        : Sagnik Mandal | B.Tech CS Engineering Student @ FIEM (2026-2030)', 'terminal-output-glow');
+        appendTerminalLine('  Focus       : Linux Administration, Python Scripting & Packet Analysis', 'terminal-output-glow');
+        appendTerminalLine('  Credentials : Google Cybersecurity Certificate, Cisco Networking, LPI Linux Essentials', 'terminal-output-glow');
+        appendTerminalLine('  CTF Status  : Top 10% Global Rank on TryHackMe (50+ Rooms Solved)', 'text-cyber-green terminal-output-glow');
         break;
 
       case 'skills':
-        appendTerminalLine('SKILL VECTORS & ACTIVE DEVELOPMENT STATUS:', 'terminal-output-glow');
-        appendTerminalLine('  1. CS Fundamentals & Algorithms [B.TECH CSE // LEARNING...]', 'terminal-output-glow');
-        appendTerminalLine('  2. Linux (Ubuntu & Kali Admin)  [ACTIVE LAB HARDENING]', 'terminal-output-glow');
+        appendTerminalLine('SKILL AREAS & STATUS:', 'terminal-output-glow');
+        appendTerminalLine('  1. CS Fundamentals & Algorithms [B.TECH CSE COURSEWORK]', 'terminal-output-glow');
+        appendTerminalLine('  2. Linux (Ubuntu & Kali Linux)  [SYSTEM ADMIN & HARDENING]', 'terminal-output-glow');
         appendTerminalLine('  3. Cybersecurity Fundamentals   [CONTINUOUS PRACTICE]', 'terminal-output-glow');
-        appendTerminalLine('  4. Python Automation & Sockets  [SCRIPT AUTOMATION]', 'terminal-output-glow');
-        appendTerminalLine('  5. TCP/IP Network Sniffing      [PACKET ANALYSIS & RFCS]', 'terminal-output-glow');
+        appendTerminalLine('  4. Python Scripting             [SCRIPTING & AUTOMATION]', 'terminal-output-glow');
+        appendTerminalLine('  5. Networking Fundamentals      [PACKET ANALYSIS & TCP/IP]', 'terminal-output-glow');
         break;
 
       case 'projects':
@@ -551,41 +633,25 @@ function initInteractiveTerminal() {
         appendTerminalLine('  10. Python Sec    - Socket & Cryptographic Safety Guidelines (docs.python.org)', 'terminal-output-glow');
         break;
 
-      case 'audience':
-        appendTerminalLine('TARGET AUDIENCE BREAKDOWN MATRIX:', 'terminal-output-glow');
-        appendTerminalLine('  Primary:   Cybersecurity Recruiters & SOC Hiring Managers (Technical & Lab Aptitude)', 'terminal-output-glow');
-        appendTerminalLine('  Secondary: CS Engineering Faculty & Academic Evaluators (Curriculum & Algorithm Rigor)', 'terminal-output-glow');
-        appendTerminalLine('  Tertiary:  CTF Competitors & Peer Security Researchers (POC & Automation Exchange)', 'terminal-output-glow');
-        break;
-
-      case 'cadence':
-        appendTerminalLine('OPERATIONAL MAINTENANCE CADENCE & UPDATE SCHEDULE:', 'terminal-output-glow');
-        appendTerminalLine('  CTF & Security Labs : Bi-Weekly Lab & Writeup Updates', 'terminal-output-glow');
-        appendTerminalLine('  Academic Matrix     : Monthly Coursework & Skill Matrix Sync', 'terminal-output-glow');
-        appendTerminalLine('  Code & Dependencies : Quarterly Security Audits & SBOM Checks', 'terminal-output-glow');
-        appendTerminalLine('  CVE Threat Feeds    : Continuous / Weekly Vulnerability Database Sync', 'terminal-output-glow');
-        appendTerminalLine('  Current Status      : SYSTEM VERIFIED CURRENT [2026.08] // ZERO CRITICAL DEPRECATIONS', 'text-cyber-green terminal-output-glow');
-        break;
-
       case 'achievements':
         appendTerminalLine('AUTHOR HONORS & ACCOMPLISHMENTS:', 'terminal-output-glow');
         appendTerminalLine('  [1] Winner: Portfolio Engineering Showcase (Zero-Framework Vanilla JS Engine)', 'terminal-output-glow');
         appendTerminalLine('  [2] Global Top 10% Rank: TryHackMe Cyber Defense Track (50+ Solved Machines)', 'terminal-output-glow');
         appendTerminalLine('  [3] Author: 15+ Open-Source Python Security Automation & Socket Tools', 'terminal-output-glow');
-        appendTerminalLine('  [4] Academic Distinction: FIEM Computer Science Engineering Top Percentile', 'terminal-output-glow');
-        appendTerminalLine('  [5] Systems Specialist: CIS Benchmark Linux Server Hardening Specialist', 'terminal-output-glow');
-        appendTerminalLine('  [6] Network Analyst: Wireshark & TShark Deep Packet Inspection Specialist', 'terminal-output-glow');
+        appendTerminalLine('  [4] Academic Distinction: FIEM Computer Science Engineering Student Track', 'terminal-output-glow');
+        appendTerminalLine('  [5] Systems Focus: Linux Server Hardening & Shell Scripting', 'terminal-output-glow');
+        appendTerminalLine('  [6] Network Analysis: Wireshark & TShark Packet Inspection Projects', 'terminal-output-glow');
         break;
 
       case 'contact':
         appendTerminalLine('DIRECT EMAIL : mandalsagnik375@gmail.com', 'terminal-output-glow');
         appendTerminalLine('LINKEDIN     : https://www.linkedin.com/in/sagnik-mandal-880411331/', 'terminal-output-glow');
-        appendTerminalLine('ACADEMICS    : B.Tech CSE @ Future Institute of Engineering and Management', 'terminal-output-glow');
+        appendTerminalLine('ACADEMICS    : B.Tech CSE Candidate @ Future Institute of Engineering and Management', 'terminal-output-glow');
         break;
 
       case 'whoami':
-        appendTerminalLine('sagnik_sec_evaluator@system:~$ Verified Sagnik Mandal Portfolio Dossier.', 'text-cyber-green terminal-output-glow');
-        appendTerminalLine('Status: Authenticated. All qualifications, certifications, and source references verified.', 'terminal-output-glow');
+        appendTerminalLine('sagnik_sec_evaluator@system:~$ Sagnik Mandal Portfolio Dossier loaded.', 'text-cyber-green terminal-output-glow');
+        appendTerminalLine('Status: Active Student Dossier. All coursework, learning tracks, and source references logged.', 'terminal-output-glow');
         break;
 
       default:
@@ -640,37 +706,63 @@ function initSkillBars() {
 /* ==========================================================================
    9. NUMERIC STAT COUNTER ANIMATION
    ========================================================================== */
+function animateStatCounter(statElement) {
+  const targetValue = parseInt(statElement.getAttribute('data-target'), 10);
+  if (isNaN(targetValue)) return;
+
+  if (statElement._animId) {
+    cancelAnimationFrame(statElement._animId);
+  }
+
+  const duration = 1800;
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easeProgress = 1 - Math.pow(1 - progress, 3);
+    const currentValue = Math.floor(targetValue * easeProgress);
+
+    statElement.textContent = currentValue;
+
+    if (progress < 1) {
+      statElement._animId = requestAnimationFrame(update);
+    } else {
+      statElement.textContent = targetValue;
+      statElement._animId = null;
+    }
+  }
+
+  statElement._animId = requestAnimationFrame(update);
+}
+
 function initStatCounters() {
   const statNumbers = document.querySelectorAll('.stat-number');
-  const observerOptions = { threshold: 0.5 };
+  if (!statNumbers.length) return;
+
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -20px 0px'
+  };
 
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const statElement = entry.target;
-        const targetValue = parseInt(statElement.getAttribute('data-target'), 10);
-        let currentValue = 0;
-
-        const duration = 3000;
-        const incrementStep = targetValue > 100 ? 30 : 1;
-        const stepTime = Math.max(20, Math.floor(duration / (targetValue / incrementStep)));
-
-        const counterInterval = setInterval(() => {
-          currentValue += incrementStep;
-          if (currentValue >= targetValue) {
-            statElement.textContent = targetValue;
-            clearInterval(counterInterval);
-          } else {
-            statElement.textContent = currentValue;
-          }
-        }, stepTime);
-
-        obs.unobserve(statElement);
+        animateStatCounter(entry.target);
+        obs.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  statNumbers.forEach((stat) => observer.observe(stat));
+  statNumbers.forEach((stat) => {
+    const rect = stat.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+    if (isVisible) {
+      animateStatCounter(stat);
+    } else {
+      observer.observe(stat);
+    }
+  });
 }
 
 
@@ -700,60 +792,148 @@ function initScrollReveal() {
 /* ==========================================================================
    11. CONTACT FORM WITH INLINE VALIDATION
    ========================================================================== */
+/* ==========================================================================
+   11. CONTACT FORM WITH INLINE VALIDATION & ASYNC PAYLOAD TRANSMISSION
+   ========================================================================== */
 function initContactForm() {
   const contactForm = document.getElementById('contact-form');
   const formSuccess = document.getElementById('form-success');
+  const formError = document.getElementById('form-error');
+  const submitBtn = document.getElementById('submit-btn');
+
   if (!contactForm) return;
 
-  contactForm.addEventListener('submit', (e) => {
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const subjectInput = document.getElementById('subject');
+  const messageInput = document.getElementById('message');
+
+  // Real-time validation on input & blur events
+  [nameInput, emailInput, subjectInput, messageInput].forEach((inputEl) => {
+    if (!inputEl) return;
+    inputEl.addEventListener('input', () => validateField(inputEl));
+    inputEl.addEventListener('blur', () => validateField(inputEl));
+  });
+
+  function validateField(inputEl) {
+    if (!inputEl) return true;
+    const val = inputEl.value.trim();
+
+    if (inputEl.id === 'name') {
+      if (!val) {
+        showError(inputEl, 'Please enter your name');
+        return false;
+      }
+      clearError(inputEl);
+      return true;
+    }
+
+    if (inputEl.id === 'email') {
+      if (!val || !validateEmail(val)) {
+        showError(inputEl, 'Please enter a valid email address');
+        return false;
+      }
+      clearError(inputEl);
+      return true;
+    }
+
+    if (inputEl.id === 'subject') {
+      if (!val) {
+        showError(inputEl, 'Please enter a subject header');
+        return false;
+      }
+      clearError(inputEl);
+      return true;
+    }
+
+    if (inputEl.id === 'message') {
+      if (!val) {
+        showError(inputEl, 'Please enter your message payload');
+        return false;
+      }
+      clearError(inputEl);
+      return true;
+    }
+
+    return true;
+  }
+
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const subjectInput = document.getElementById('subject');
-    const messageInput = document.getElementById('message');
+    const isNameValid = validateField(nameInput);
+    const isEmailValid = validateField(emailInput);
+    const isSubjectValid = validateField(subjectInput);
+    const isMessageValid = validateField(messageInput);
 
-    let isValid = true;
+    const isFormValid = isNameValid && isEmailValid && isSubjectValid && isMessageValid;
 
-    if (!nameInput.value.trim()) {
-      showError(nameInput, 'Please enter your name');
-      isValid = false;
-    } else {
-      clearError(nameInput);
+    if (!isFormValid) {
+      if (!isNameValid && nameInput) nameInput.focus();
+      else if (!isEmailValid && emailInput) emailInput.focus();
+      else if (!isSubjectValid && subjectInput) subjectInput.focus();
+      else if (!isMessageValid && messageInput) messageInput.focus();
+      return;
     }
 
-    if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
-      showError(emailInput, 'Please enter a valid email address');
-      isValid = false;
-    } else {
-      clearError(emailInput);
+    // Reset banner displays
+    if (formSuccess) formSuccess.hidden = true;
+    if (formError) formError.hidden = true;
+
+    // Set Submit Button Loading State
+    const originalBtnContent = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span>[TRANSMITTING PAYLOAD...]</span> <svg class="spin-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="12"></circle></svg>`;
     }
 
-    if (!subjectInput.value.trim()) {
-      showError(subjectInput, 'Please enter a subject');
-      isValid = false;
-    } else {
-      clearError(subjectInput);
-    }
+    const payload = {
+      name: nameInput.value.trim(),
+      email: emailInput.value.trim(),
+      _subject: `[Portfolio Contact] ${subjectInput.value.trim()}`,
+      subject: subjectInput.value.trim(),
+      message: messageInput.value.trim()
+    };
 
-    if (!messageInput.value.trim()) {
-      showError(messageInput, 'Please enter your message');
-      isValid = false;
-    } else {
-      clearError(messageInput);
-    }
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/mandalsagnik375@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
 
-    if (isValid) {
-      if (formSuccess) formSuccess.hidden = false;
-      contactForm.reset();
-
-      setTimeout(() => {
-        if (formSuccess) formSuccess.hidden = true;
-      }, 6000);
+      if (response.ok) {
+        if (formSuccess) formSuccess.hidden = false;
+        if (formError) formError.hidden = true;
+        contactForm.reset();
+        [nameInput, emailInput, subjectInput, messageInput].forEach(clearError);
+      } else {
+        throw new Error(`Server returned HTTP ${response.status}`);
+      }
+    } catch (err) {
+      console.warn('Form submission endpoint unreachable:', err);
+      if (formError) {
+        formError.hidden = false;
+        const errorText = document.getElementById('form-error-text');
+        if (errorText) {
+          const mailtoUrl = `mailto:mandalsagnik375@gmail.com?subject=${encodeURIComponent(payload.subject)}&body=${encodeURIComponent(payload.message)}`;
+          errorText.innerHTML = `[STATUS 500: TRANSMISSION FAILED] Endpoint unreachable. <a href="${mailtoUrl}" target="_blank" style="color: #ff0055; text-decoration: underline; font-weight: bold;">Click to send via mail client</a>`;
+        }
+      }
+      if (formSuccess) formSuccess.hidden = true;
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnContent;
+      }
     }
   });
 
   function showError(inputEl, msg) {
+    if (!inputEl) return;
     const parentGroup = inputEl.closest('.form-group');
     if (parentGroup) {
       parentGroup.classList.add('has-error');
@@ -763,6 +943,7 @@ function initContactForm() {
   }
 
   function clearError(inputEl) {
+    if (!inputEl) return;
     const parentGroup = inputEl.closest('.form-group');
     if (parentGroup) {
       parentGroup.classList.remove('has-error');

@@ -151,10 +151,10 @@ body::before {
   opacity: 0.3;
 }
 
-/* Scoped Glassmorphic Transparency Override ONLY for the 3 Requested Sections: #info, #skills, #governance */
+/* Scoped Glassmorphic Transparency Override ONLY for the 3 Requested Sections: #info, #skills, #references */
 #info,
 #skills,
-#governance {
+#references {
   background: transparent !important;
 }
 
@@ -165,10 +165,7 @@ body::before {
 #skills .cred-card-enlarged,
 #skills .skill-chip,
 #skills .skill-item,
-#governance .governance-card,
-#governance .source-card,
-#governance .cadence-item,
-#governance .audience-item {
+#references .source-card {
   background: rgba(4, 9, 18, 0.45) !important;
   backdrop-filter: blur(6px) !important;
   -webkit-backdrop-filter: blur(6px) !important;
@@ -830,7 +827,7 @@ body.light-theme .moon-icon { display: none; }
 .dot-yellow { background-color: var(--accent-warning); }
 .dot-green { background-color: var(--accent-primary); }
 
-.terminal-title { font-size: 0.78rem; color: var(--text-muted); }
+.terminal-title { font-size: 0.78rem; color: var(--text-secondary); font-weight: 500; }
 
 .terminal-body {
   padding: 1.2rem;
@@ -845,6 +842,11 @@ body.light-theme .moon-icon { display: none; }
 }
 
 .terminal-line { line-height: 1.5; }
+.terminal-body .text-muted,
+.terminal-line.text-muted {
+  color: #94a3b8 !important;
+  font-weight: 500;
+}
 .terminal-prompt { color: var(--accent-primary); font-weight: 700; }
 
 /* High-Voltage Matrix Neon Glow for Command Output Answers */
@@ -875,7 +877,7 @@ body.light-theme .moon-icon { display: none; }
 
 .cmd-chip {
   background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-color-muted);
+  border: 1px solid rgba(0, 255, 102, 0.35);
   color: var(--accent-primary);
   font-family: var(--font-mono);
   font-size: 0.78rem;
@@ -883,6 +885,9 @@ body.light-theme .moon-icon { display: none; }
   padding: 0.35rem 0.75rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
   transition: border-color var(--transition-fast), color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -892,6 +897,13 @@ body.light-theme .moon-icon { display: none; }
   background-color: var(--accent-danger);
   box-shadow: 0 0 12px rgba(255, 0, 85, 0.6);
   transform: translateY(-2px);
+}
+
+.cmd-chip:active {
+  border-color: var(--accent-danger);
+  color: #ffffff;
+  background-color: var(--accent-danger);
+  transform: scale(0.96);
 }
 
 .terminal-input-line {
@@ -908,6 +920,11 @@ body.light-theme .moon-icon { display: none; }
   font-family: var(--font-mono);
   font-size: 0.85rem;
   width: 100%;
+}
+
+.terminal-input::placeholder {
+  color: #94a3b8;
+  opacity: 1;
 }
 
 .hero-stats-grid {
@@ -1756,6 +1773,33 @@ body.light-theme .moon-icon { display: none; }
   margin-bottom: 2rem;
 }
 
+/* Responsive Projects Grid for Unique Project Cards */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  z-index: 2;
+  position: relative;
+}
+
+.projects-grid .marquee-card {
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .marquee-container {
   display: flex;
   flex-direction: column;
@@ -2308,6 +2352,25 @@ body.light-theme .moon-icon { display: none; }
   font-size: 0.88rem;
 }
 
+.form-error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(255, 0, 85, 0.12);
+  border: 1px solid var(--accent-danger);
+  color: var(--accent-danger);
+  font-family: var(--font-mono);
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.5rem;
+  font-size: 0.88rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
 /* ==========================================================================
    14. FOOTER & BACK TO TOP BUTTON
@@ -2468,8 +2531,14 @@ body.light-theme .moon-icon { display: none; }
   }
 
   .cmd-chip {
-    padding: 0.4rem 0.7rem;
-    font-size: 0.75rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   /* Prevent iOS Safari 16px Font Auto-Zoom on Input Focus */
@@ -2567,9 +2636,9 @@ body.light-theme .moon-icon { display: none; }
   .back-to-top-btn { bottom: 1.2rem; right: 1.2rem; }
 }
 /* ==========================================================================
-   16B. GOVERNANCE, TARGET AUDIENCE, MAINTENANCE CADENCE & CITATIONS
+   16B. REFERENCES & TECHNICAL CITATIONS
    ========================================================================== */
-.governance-section {
+.references-section {
   position: relative;
   background-color: var(--bg-surface);
   border-top: 1px solid var(--border-color-muted);
