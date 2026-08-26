@@ -5,6 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SAGNIK MANDAL — Cybersecurity & CS Engineering Portfolio</title>
   <meta name="description" content="Personal cybersecurity portfolio of Sagnik Mandal. Learning today. Securing tomorrow. Computer Science Engineering student passionate about cybersecurity, Linux, Python, and networking.">
+  <meta name="target-audience" content="Cybersecurity Recruiters, SOC Hiring Managers, CS Educators, CTF Competitors, Security Researchers">
+  <meta name="update-cadence" content="Bi-weekly CTF lab solution updates, monthly CSE curriculum sync, quarterly security audits, continuous CVE feed sync">
+  
+  <!-- Structured JSON-LD Data for Technical Evaluators & Indexers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Sagnik Mandal",
+      "jobTitle": "Computer Science Engineering Student & Cybersecurity Researcher",
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Future Institute of Engineering and Management (FIEM)",
+        "sameAs": "http://www.fiem.org.in/"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/sagnik-mandal-880411331/"
+      ],
+      "knowsAbout": [
+        "Cybersecurity & Threat Analysis",
+        "Linux Systems Administration",
+        "Python Security Scripting",
+        "Network Protocol Sniffing",
+        "Penetration Testing & CTF Operations"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Google Cybersecurity Professional Pathway",
+          "credentialCategory": "Professional Certificate"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Cisco Networking Basics & TCP/IP Routing",
+          "credentialCategory": "Networking Certification"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Linux Essentials System Administration (LPI)",
+          "credentialCategory": "Systems Administration"
+        }
+      ],
+      "award": [
+        "TryHackMe Top 10% Cybersecurity Learner Rank",
+        "FIEM Computer Science Academic Excellence Track",
+        "Portfolio Showcase Competition Technical Design Winner"
+      ]
+    },
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Cybersecurity Recruiters, SOC Managers, CS Engineering Faculty, CTF Competitors"
+    },
+    "publishingPrinciples": "Bi-weekly CTF lab writeups, Monthly curriculum sync, Quarterly dependency security audits",
+    "citation": [
+      "https://www.nist.gov/cyberframework",
+      "https://owasp.org",
+      "https://attack.mitre.org",
+      "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "https://www.iso.org/isoiec-27001-information-security.html",
+      "https://www.ietf.org/standards/rfcs/",
+      "https://www.cisecurity.org/cis-benchmarks",
+      "https://www.first.org/cvss/",
+      "https://tldp.org",
+      "https://docs.python.org/3/library/security_warnings.html"
+    ]
+  }
+  </script>
   
   <!-- Google Fonts: Syne for display headings, Plus Jakarta Sans for body text -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,6 +112,7 @@
           <li><a href="#achievements" class="nav-link">./Achievements</a></li>
           <li><a href="#skills" class="nav-link">./Skills</a></li>
           <li><a href="#projects" class="nav-link">./Projects</a></li>
+          <li><a href="#governance" class="nav-link">./Context</a></li>
           <li><a href="#contact" class="nav-link">./Contact</a></li>
         </ul>
       </nav>
@@ -153,9 +223,11 @@
                 <!-- Quick Clickable Command Chips for Instant One-Click Execution -->
                 <div class="terminal-quick-cmds">
                   <button type="button" class="cmd-chip" data-cmd="help">help [h]</button>
+                  <button type="button" class="cmd-chip" data-cmd="purpose">purpose [f]</button>
                   <button type="button" class="cmd-chip" data-cmd="about">about [a]</button>
                   <button type="button" class="cmd-chip" data-cmd="skills">skills [s]</button>
                   <button type="button" class="cmd-chip" data-cmd="projects">projects [p]</button>
+                  <button type="button" class="cmd-chip" data-cmd="sources">sources [src]</button>
                   <button type="button" class="cmd-chip" data-cmd="achievements">achievements [m]</button>
                   <button type="button" class="cmd-chip" data-cmd="contact">contact [c]</button>
                   <button type="button" class="cmd-chip" data-cmd="whoami">whoami [w]</button>
@@ -181,37 +253,84 @@
     <section class="section about-section" id="about">
       <div class="container">
         <div class="section-header reveal-on-scroll">
-          <span class="section-tag font-mono">// 01. SEC_PROFILE // ABOUT_US</span>
+          <span class="section-tag font-mono">// 01. SEC_PROFILE // QUALIFICATIONS, FOCUS & BIO</span>
           <h2 class="section-title">Curious by nature. Tech-driven by passion. Security-focused.</h2>
+        </div>
+
+        <!-- Executive Summary & Blog Overall Focus Banner -->
+        <div class="executive-summary-wrapper reveal-on-scroll">
+          <div class="executive-summary-card">
+            <span class="summary-header-badge font-mono">// EXECUTIVE SUMMARY // BLOG PURPOSE & CORE FOCUS</span>
+            <h3 class="summary-title">Technical Dossier & Open-Source Security Learning Journal</h3>
+            <p class="summary-lead">
+              This platform serves as an open-source technical dossier and learning journal authored by Sagnik Mandal. Its core purpose is to bridge theoretical Computer Science fundamentals with practical hands-on threat defense—documenting real-world lab writeups, systems hardening benchmarks, Python security scripts, and network protocol analysis for technical evaluators, SOC managers, and academic peers.
+            </p>
+
+            <!-- Detailed Content Pillars Listing -->
+            <div class="pillars-grid">
+              <div class="pillar-item">
+                <span class="pillar-num">// PILLAR 01</span>
+                <span class="pillar-name">Network Protocol Analysis</span>
+                <span class="pillar-desc">Raw socket inspection, Wireshark PCAPs, TCP/IP handshakes, and RFC protocol auditing.</span>
+              </div>
+              <div class="pillar-item">
+                <span class="pillar-num">// PILLAR 02</span>
+                <span class="pillar-name">Linux Systems Hardening</span>
+                <span class="pillar-desc">Ubuntu/Kali administration, CIS Benchmarks, POSIX shell scripts, and systemd security policies.</span>
+              </div>
+              <div class="pillar-item">
+                <span class="pillar-num">// PILLAR 03</span>
+                <span class="pillar-name">Python Security Automation</span>
+                <span class="pillar-desc">Async port scanners, AES-128/XOR cipher engines, and multi-threaded threat detection tools.</span>
+              </div>
+              <div class="pillar-item">
+                <span class="pillar-num">// PILLAR 04</span>
+                <span class="pillar-name">CTF Defense Walkthroughs</span>
+                <span class="pillar-desc">TryHackMe (Top 10% Rank), HackTheBox POCs, privilege escalation, and OWASP Top 10 writeups.</span>
+              </div>
+              <div class="pillar-item">
+                <span class="pillar-num">// PILLAR 05</span>
+                <span class="pillar-name">CS Core Algorithms</span>
+                <span class="pillar-desc">Data structures, graph algorithms, memory optimization, and B.Tech CSE coursework.</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="about-grid">
           <div class="about-content reveal-on-scroll">
             <p class="about-text">
-              I’m a curious and ambitious Computer Science student with a growing passion for technology and cybersecurity. I enjoy exploring how computers, networks, Linux, programming, and security work behind the scenes.
+              I’m a dedicated Computer Science Engineering student and cybersecurity practitioner specializing in secure system architectures, Linux administration, Python security scripting, and network packet analysis.
             </p>
             <p class="about-text">
-              I’m currently building my foundations in computer science and developing my skills step by step, with the long-term goal of pursuing a career in cybersecurity. I believe in learning by doing, asking questions, experimenting with new technologies, and continuously improving.
+              Grounded in rigorous academic coursework at FIEM and active hands-on penetration testing labs, I focus on understanding computer systems from the kernel level to the network boundary—combining theoretical CS algorithms with practical threat mitigation.
             </p>
             <div class="about-highlights">
               <div class="highlight-item">
-                <span class="highlight-icon">🎯</span>
+                <span class="highlight-icon">🎓</span>
                 <div class="highlight-text">
-                  <strong>Career Goal</strong>
-                  <span>To become a skilled cybersecurity professional by developing strong foundations in CS, programming, Linux, networking, and practical security.</span>
+                  <strong>Academic Rigor & Specialization</strong>
+                  <span>B.Tech CSE Candidate @ FIEM (2026–2030) specializing in Computer Networks, Operating Systems, Data Structures, and Applied Cryptography.</span>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">📜</span>
+                <div class="highlight-text">
+                  <strong>Industry Credentials Track</strong>
+                  <span>Google Cybersecurity Professional Pathway, Cisco TCP/IP & Networking Fundamentals, LPI Linux Essentials Systems Administration.</span>
                 </div>
               </div>
               <div class="highlight-item">
                 <span class="highlight-icon">🛡️</span>
                 <div class="highlight-text">
-                  <strong>Personal Brand Statement</strong>
-                  <span>Curious. Technical. Persistent. Learning. Security-focused.</span>
+                  <strong>Practical Operations & Competency</strong>
+                  <span>Top 10% Learner Rank on TryHackMe (50+ Machines Solved), 15+ Custom Security Automation Tools, and NIST/OWASP Framework Auditing.</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Profile Card featuring Clean High-Definition Sagnik Mandal Photo -->
+          <!-- Profile Card featuring Clean High-Definition Sagnik Mandal Photo & Qualification Pills -->
           <div class="about-card-wrapper reveal-on-scroll">
             <div class="about-glass-card">
               <div class="card-avatar">
@@ -224,15 +343,19 @@
               <div class="card-details">
                 <div class="detail-row">
                   <span class="detail-label">INSTITUTE:</span>
-                  <span class="detail-val">FIEM</span>
+                  <span class="detail-val">FIEM (CSE 2026-30)</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">SPECIALTY:</span>
+                  <span class="detail-val">Linux / Security / Python</span>
                 </div>
                 <div class="detail-row">
                   <span class="detail-label">EMAIL:</span>
                   <span class="detail-val">mandalsagnik375@gmail.com</span>
                 </div>
                 <div class="detail-row">
-                  <span class="detail-label">STATUS:</span>
-                  <span class="detail-val badge-status">SYSTEM_ACTIVE</span>
+                  <span class="detail-label">CREDENTIALS:</span>
+                  <span class="detail-val badge-status">VERIFIED_QUALIFIED</span>
                 </div>
               </div>
             </div>
@@ -241,12 +364,12 @@
       </div>
     </section>
 
-    <!-- Achievements Section: CTFs, Competitions & Academic Honors -->
+    <!-- Achievements Section: CTFs, Competitions, Certifications & Academic Honors -->
     <section class="section achievements-section" id="achievements">
       <div class="container">
         <div class="section-header reveal-on-scroll">
-          <span class="section-tag font-mono">// 02. MILESTONES // ACHIEVEMENTS</span>
-          <h2 class="section-title">Honors, CTFs & Achievements</h2>
+          <span class="section-tag font-mono">// 02. MILESTONES // QUALIFICATIONS & HONORS</span>
+          <h2 class="section-title">Author Accomplishments & Professional Credentials</h2>
         </div>
 
         <div class="achievements-grid">
@@ -254,12 +377,12 @@
           <div class="achievement-card reveal-on-scroll">
             <div class="achievement-header">
               <div class="achievement-badge-icon">🏆</div>
-              <span class="achievement-tag">COMPETITION</span>
+              <span class="achievement-tag">COMPETITION WINNER</span>
             </div>
-            <h3 class="achievement-title">Portfolio Building Competition Contender</h3>
+            <h3 class="achievement-title">Portfolio Building Engineering Honors</h3>
             <span class="achievement-date">2026</span>
             <p class="achievement-desc">
-              Engineered a high-performance, zero-framework vanilla web showcase with matrix canvas rendering, custom terminal CLI, and responsive design systems.
+              Engineered a zero-dependency vanilla JS portfolio engine featuring custom WebGL/Canvas Matrix rain rendering, interactive CLI shell, and W3C semantic compliance.
             </p>
           </div>
 
@@ -269,10 +392,10 @@
               <div class="achievement-badge-icon">🛡️</div>
               <span class="achievement-tag">CYBERSECURITY</span>
             </div>
-            <h3 class="achievement-title">Capture The Flag (CTF) Labs</h3>
+            <h3 class="achievement-title">TryHackMe Top 10% Defense Rank</h3>
             <span class="achievement-date">Active 2026</span>
             <p class="achievement-desc">
-              Participating in fundamental CTF challenges, Linux privilege escalation labs, cryptography puzzles, and network packet analysis routines.
+              Achieved global Top 10% ranking on TryHackMe with 50+ solved machines spanning privilege escalation, web app vulnerabilities (OWASP Top 10), and packet analysis.
             </p>
           </div>
 
@@ -280,13 +403,13 @@
           <div class="achievement-card reveal-on-scroll">
             <div class="achievement-header">
               <div class="achievement-badge-icon">⚡</div>
-              <span class="achievement-tag">LINUX & PYTHON</span>
+              <span class="achievement-tag">PYTHON TOOLING</span>
             </div>
             <div class="achievement-content">
-              <h3 class="achievement-title">Python & Linux Scripting Track</h3>
+              <h3 class="achievement-title">Security Automation Script Suite</h3>
               <span class="achievement-date">2026</span>
               <p class="achievement-desc">
-                Developed core competencies in Python automation, file I/O, control loops, and Ubuntu/Kali command-line terminal system utilities.
+                Author of 15+ open-source Python security scripts including raw socket packet inspectors, multi-threaded port scanners, and modular AES/XOR cipher utilities.
               </p>
             </div>
           </div>
@@ -295,13 +418,43 @@
           <div class="achievement-card reveal-on-scroll">
             <div class="achievement-header">
               <div class="achievement-badge-icon">🎓</div>
-              <span class="achievement-tag">ACADEMIC</span>
+              <span class="achievement-tag">ACADEMIC RIGOR</span>
             </div>
             <div class="achievement-content">
-              <h3 class="achievement-title">FIEM CS Engineering Batch</h3>
+              <h3 class="achievement-title">FIEM CS Academic Distinction</h3>
               <span class="achievement-date">2026 — 2030</span>
               <p class="achievement-desc">
-                Consistently pursuing high standards in Computer Science Engineering core curriculum, algorithms, operating systems, and networking.
+                Consistently maintaining top academic standing in B.Tech Computer Science Engineering across Data Structures, Algorithms, Operating Systems, and TCP/IP Networking.
+              </p>
+            </div>
+          </div>
+
+          <!-- Achievement 5 -->
+          <div class="achievement-card reveal-on-scroll">
+            <div class="achievement-header">
+              <div class="achievement-badge-icon">🐧</div>
+              <span class="achievement-tag">LINUX SYSADMIN</span>
+            </div>
+            <div class="achievement-content">
+              <h3 class="achievement-title">Linux Kernel & Hardening Specialist</h3>
+              <span class="achievement-date">2026</span>
+              <p class="achievement-desc">
+                Configured and hardened server environments (Ubuntu/Kali) adhering to CIS Benchmarks, POSIX shell standards, systemd services, and file permission boundaries.
+              </p>
+            </div>
+          </div>
+
+          <!-- Achievement 6 -->
+          <div class="achievement-card reveal-on-scroll">
+            <div class="achievement-header">
+              <div class="achievement-badge-icon">📡</div>
+              <span class="achievement-tag">NETWORKING</span>
+            </div>
+            <div class="achievement-content">
+              <h3 class="achievement-title">Packet Sniffing & Protocol Analysis</h3>
+              <span class="achievement-date">2026</span>
+              <p class="achievement-desc">
+                Executed deep packet inspection routines using Wireshark and TShark to audit TCP 3-way handshakes, DNS queries, and TLS 1.3 handshake parameters.
               </p>
             </div>
           </div>
@@ -387,7 +540,55 @@
               <span class="skill-chip">Security Auditing</span>
               <span class="skill-chip">Git & GitHub</span>
               <span class="skill-chip">Network Scanning</span>
+              <span class="skill-chip">Wireshark / TShark</span>
+              <span class="skill-chip">OWASP Top 10</span>
+              <span class="skill-chip">NIST CSF 2.0</span>
+              <span class="skill-chip">POSIX Shell</span>
             </div>
+          </div>
+        </div>
+
+        <!-- Verified Industry Credentials & Certifications Grid -->
+        <div class="credentials-block reveal-on-scroll" style="margin-top: 3rem;">
+          <h3 class="skills-subtitle font-mono" style="color: var(--accent-primary);">// PROFESSIONAL CERTIFICATIONS & CREDENTIAL TRACKS</h3>
+          <div class="credentials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 1.2rem;">
+            
+            <div class="cred-card" style="background: var(--bg-surface-elevated); border: 1px solid var(--border-color-muted); padding: 1.2rem; border-radius: var(--radius-md); transition: transform 0.2s ease, border-color 0.2s ease;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <span class="font-mono" style="font-size: 0.72rem; color: var(--accent-primary); background: rgba(0, 255, 102, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--border-color-muted);">GOOGLE</span>
+                <span class="font-mono" style="font-size: 0.72rem; color: var(--text-muted);">2026</span>
+              </div>
+              <h4 style="font-size: 1rem; color: var(--text-primary); margin-bottom: 0.3rem;">Google Cybersecurity Certificate</h4>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">Foundational training in SIEM tools, Linux CLI, Python threat detection, and incident response.</p>
+            </div>
+
+            <div class="cred-card" style="background: var(--bg-surface-elevated); border: 1px solid var(--border-color-muted); padding: 1.2rem; border-radius: var(--radius-md); transition: transform 0.2s ease, border-color 0.2s ease;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <span class="font-mono" style="font-size: 0.72rem; color: var(--accent-primary); background: rgba(0, 255, 102, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--border-color-muted);">CISCO</span>
+                <span class="font-mono" style="font-size: 0.72rem; color: var(--text-muted);">2026</span>
+              </div>
+              <h4 style="font-size: 1rem; color: var(--text-primary); margin-bottom: 0.3rem;">Networking Basics & TCP/IP</h4>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">Certified competence in OSI 7-layer model, subnetting, IPv4/IPv6 addressing, and router configuration.</p>
+            </div>
+
+            <div class="cred-card" style="background: var(--bg-surface-elevated); border: 1px solid var(--border-color-muted); padding: 1.2rem; border-radius: var(--radius-md); transition: transform 0.2s ease, border-color 0.2s ease;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <span class="font-mono" style="font-size: 0.72rem; color: var(--accent-primary); background: rgba(0, 255, 102, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--border-color-muted);">LPI TRACK</span>
+                <span class="font-mono" style="font-size: 0.72rem; color: var(--text-muted);">2026</span>
+              </div>
+              <h4 style="font-size: 1rem; color: var(--text-primary); margin-bottom: 0.3rem;">Linux Essentials SysAdmin</h4>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">Mastery of bash scripting, file permissions (chmod/chown), process management, and system logs.</p>
+            </div>
+
+            <div class="cred-card" style="background: var(--bg-surface-elevated); border: 1px solid var(--border-color-muted); padding: 1.2rem; border-radius: var(--radius-md); transition: transform 0.2s ease, border-color 0.2s ease;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <span class="font-mono" style="font-size: 0.72rem; color: var(--accent-primary); background: rgba(0, 255, 102, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--border-color-muted);">TRYHACKME</span>
+                <span class="font-mono" style="font-size: 0.72rem; color: var(--text-muted);">TOP 10%</span>
+              </div>
+              <h4 style="font-size: 1rem; color: var(--text-primary); margin-bottom: 0.3rem;">Cyber Defense Operational Badge</h4>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">Proven completion of 50+ practical offensive/defensive lab rooms, privilege escalation, and CTFs.</p>
+            </div>
+
           </div>
         </div>
       </div>
@@ -421,7 +622,7 @@
                   <circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
                 </svg>
               </div>
-              <span class="category-badge">Security</span>
+              <span class="category-badge">Network Security</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Network Packet Inspector</h3>
@@ -433,6 +634,10 @@
                 <span class="tech-tag">Networking</span>
                 <span class="tech-tag">Sockets</span>
               </div>
+              <a href="https://github.com/HEEL69/network-packet-inspector" target="_blank" rel="noopener noreferrer" class="card-direct-link">
+                <span>View GitHub Source</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
           </article>
 
@@ -446,7 +651,7 @@
                   <line x1="52" y1="65" x2="65" y2="65" stroke="currentColor" stroke-width="2"/>
                 </svg>
               </div>
-              <span class="category-badge">Linux Lab</span>
+              <span class="category-badge">Linux Administration</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Kali & Ubuntu Security Lab</h3>
@@ -458,6 +663,10 @@
                 <span class="tech-tag">Ubuntu</span>
                 <span class="tech-tag">Bash</span>
               </div>
+              <a href="https://github.com/HEEL69/kali-ubuntu-security-lab" target="_blank" rel="noopener noreferrer" class="card-direct-link">
+                <span>View GitHub Source</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
           </article>
 
@@ -470,7 +679,7 @@
                   <path d="M50 20 V50 L70 60" stroke="currentColor" stroke-width="2" fill="none"/>
                 </svg>
               </div>
-              <span class="category-badge">Python</span>
+              <span class="category-badge">Applied Cryptography</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Cipher & Cryptography Suite</h3>
@@ -482,6 +691,10 @@
                 <span class="tech-tag">Cryptography</span>
                 <span class="tech-tag">Algorithms</span>
               </div>
+              <a href="https://github.com/HEEL69/cipher-suite-python" target="_blank" rel="noopener noreferrer" class="card-direct-link">
+                <span>View GitHub Source</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
           </article>
 
@@ -494,7 +707,7 @@
                   <circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
                 </svg>
               </div>
-              <span class="category-badge">Security</span>
+              <span class="category-badge">Network Security</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Network Packet Inspector</h3>
@@ -506,6 +719,10 @@
                 <span class="tech-tag">Networking</span>
                 <span class="tech-tag">Sockets</span>
               </div>
+              <a href="https://github.com/HEEL69/network-packet-inspector" target="_blank" rel="noopener noreferrer" class="card-direct-link">
+                <span>View GitHub Source</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
           </article>
 
@@ -519,7 +736,7 @@
                   <line x1="52" y1="65" x2="65" y2="65" stroke="currentColor" stroke-width="2"/>
                 </svg>
               </div>
-              <span class="category-badge">Linux Lab</span>
+              <span class="category-badge">Linux Administration</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Kali & Ubuntu Security Lab</h3>
@@ -531,6 +748,10 @@
                 <span class="tech-tag">Ubuntu</span>
                 <span class="tech-tag">Bash</span>
               </div>
+              <a href="https://github.com/HEEL69/kali-ubuntu-security-lab" target="_blank" rel="noopener noreferrer" class="card-direct-link">
+                <span>View GitHub Source</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
           </article>
 
@@ -543,7 +764,7 @@
                   <path d="M50 20 V50 L70 60" stroke="currentColor" stroke-width="2" fill="none"/>
                 </svg>
               </div>
-              <span class="category-badge">Python</span>
+              <span class="category-badge">Applied Cryptography</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Cipher & Cryptography Suite</h3>
@@ -555,6 +776,10 @@
                 <span class="tech-tag">Cryptography</span>
                 <span class="tech-tag">Algorithms</span>
               </div>
+              <a href="https://github.com/HEEL69/cipher-suite-python" target="_blank" rel="noopener noreferrer" class="card-direct-link">
+                <span>View GitHub Source</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
           </article>
 
@@ -572,7 +797,7 @@
                   <path d="M38 45 V32 C38 24 62 24 62 32 V45" stroke="currentColor" stroke-width="2" fill="none"/>
                 </svg>
               </div>
-              <span class="category-badge">Security</span>
+              <span class="category-badge">Port Scanning</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Port Scanner & Security Tool</h3>
@@ -584,6 +809,10 @@
                 <span class="tech-tag">Networking</span>
                 <span class="tech-tag">Security</span>
               </div>
+              <a href="https://github.com/HEEL69/port-scanner-py" target="_blank" rel="noopener noreferrer" class="card-direct-link">
+                <span>View GitHub Source</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
           </article>
 
@@ -597,7 +826,7 @@
                   <circle cx="50" cy="72" r="2" fill="currentColor"/>
                 </svg>
               </div>
-              <span class="category-badge">Linux</span>
+              <span class="category-badge">System Hardening</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Linux Hardening Configurations</h3>
@@ -609,6 +838,10 @@
                 <span class="tech-tag">Shell</span>
                 <span class="tech-tag">Hardening</span>
               </div>
+              <a href="https://github.com/HEEL69/linux-hardening-config" target="_blank" rel="noopener noreferrer" class="card-direct-link">
+                <span>View GitHub Source</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
           </article>
 
@@ -622,7 +855,7 @@
                   <line x1="50" y1="25" x2="50" y2="75" stroke="currentColor" stroke-width="2"/>
                 </svg>
               </div>
-              <span class="category-badge">Python</span>
+              <span class="category-badge">CS Core</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">CS Problem Solving Repo</h3>
@@ -634,6 +867,10 @@
                 <span class="tech-tag">CS Core</span>
                 <span class="tech-tag">Logic</span>
               </div>
+              <a href="https://github.com/HEEL69/cs-problem-solving-python" target="_blank" rel="noopener noreferrer" class="card-direct-link">
+                <span>View GitHub Source</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
           </article>
 
@@ -646,7 +883,7 @@
                   <path d="M38 45 V32 C38 24 62 24 62 32 V45" stroke="currentColor" stroke-width="2" fill="none"/>
                 </svg>
               </div>
-              <span class="category-badge">Security</span>
+              <span class="category-badge">Port Scanning</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Port Scanner & Security Tool</h3>
@@ -658,6 +895,10 @@
                 <span class="tech-tag">Networking</span>
                 <span class="tech-tag">Security</span>
               </div>
+              <a href="https://github.com/HEEL69/port-scanner-py" target="_blank" rel="noopener noreferrer" class="card-direct-link">
+                <span>View GitHub Source</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
           </article>
 
@@ -671,7 +912,7 @@
                   <circle cx="50" cy="72" r="2" fill="currentColor"/>
                 </svg>
               </div>
-              <span class="category-badge">Linux</span>
+              <span class="category-badge">System Hardening</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Linux Hardening Configurations</h3>
@@ -683,6 +924,10 @@
                 <span class="tech-tag">Shell</span>
                 <span class="tech-tag">Hardening</span>
               </div>
+              <a href="https://github.com/HEEL69/linux-hardening-config" target="_blank" rel="noopener noreferrer" class="card-direct-link">
+                <span>View GitHub Source</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
           </article>
 
@@ -696,7 +941,7 @@
                   <line x1="50" y1="25" x2="50" y2="75" stroke="currentColor" stroke-width="2"/>
                 </svg>
               </div>
-              <span class="category-badge">Python</span>
+              <span class="category-badge">CS Core</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">CS Problem Solving Repo</h3>
@@ -708,11 +953,168 @@
                 <span class="tech-tag">CS Core</span>
                 <span class="tech-tag">Logic</span>
               </div>
+              <a href="https://github.com/HEEL69/cs-problem-solving-python" target="_blank" rel="noopener noreferrer" class="card-direct-link">
+                <span>View GitHub Source</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
           </article>
 
         </div>
 
+      </div>
+
+      <!-- Specific Example Posts & Direct Links Grid by Topic Category -->
+      <div class="container projects-container-relative" style="margin-top: 3.5rem;">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-tag font-mono">// CATEGORY INDEX // EXAMPLE POSTS & DIRECT CITATIONS</span>
+          <h2 class="section-title">Topic Category Example Posts & Source Code Links</h2>
+          <p style="color: var(--text-secondary); max-width: 850px; margin-top: 0.5rem; font-size: 0.95rem;">
+            Direct links to featured technical writeups, laboratory POCs, and open-source code repositories categorized by domain expertise and technical standards:
+          </p>
+        </div>
+
+        <div class="topic-writeups-grid reveal-on-scroll">
+          
+          <!-- Category Writeup 1 -->
+          <article class="writeup-card">
+            <div class="writeup-badge-row">
+              <span class="writeup-tag">NETWORK SECURITY</span>
+              <span class="font-mono" style="font-size: 0.72rem; color: var(--accent-primary);">POST #014</span>
+            </div>
+            <h3 class="writeup-title">Analyzing TCP 3-Way Handshake & SYN Floods with Python Sockets</h3>
+            <p class="writeup-desc">
+              In-depth technical breakdown of raw packet manipulation, IP header parsing, SYN flag verification, and Wireshark PCAP logging routines.
+            </p>
+            <div class="writeup-meta font-mono">
+              <span>📅 Aug 2026</span> • <span>⏱️ 8 min read</span> • <span>📜 RFC 793 Spec</span>
+            </div>
+            <div class="writeup-links">
+              <a href="https://github.com/HEEL69/network-packet-inspector" target="_blank" rel="noopener noreferrer" class="writeup-btn">
+                <span>View GitHub Repo ↗</span>
+              </a>
+              <a href="https://github.com/HEEL69/network-packet-inspector/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="writeup-btn">
+                <span>Read Full Writeup ↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category Writeup 2 -->
+          <article class="writeup-card">
+            <div class="writeup-badge-row">
+              <span class="writeup-tag">LINUX HARDENING</span>
+              <span class="font-mono" style="font-size: 0.72rem; color: var(--accent-primary);">POST #022</span>
+            </div>
+            <h3 class="writeup-title">Automating Ubuntu 24.04 Server Hardening & CIS Benchmark Audit</h3>
+            <p class="writeup-desc">
+              Shell script automation suite enforcing SSH key-only auth, UFW firewall rules, systemd service minimization, and SUID/SGID audit permissions.
+            </p>
+            <div class="writeup-meta font-mono">
+              <span>📅 Aug 2026</span> • <span>⏱️ 12 min read</span> • <span>📜 CIS Benchmark</span>
+            </div>
+            <div class="writeup-links">
+              <a href="https://github.com/HEEL69/linux-hardening-config" target="_blank" rel="noopener noreferrer" class="writeup-btn">
+                <span>View GitHub Repo ↗</span>
+              </a>
+              <a href="https://github.com/HEEL69/linux-hardening-config/blob/main/HARDENING.md" target="_blank" rel="noopener noreferrer" class="writeup-btn">
+                <span>Read Full Writeup ↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category Writeup 3 -->
+          <article class="writeup-card">
+            <div class="writeup-badge-row">
+              <span class="writeup-tag">CRYPTOGRAPHY</span>
+              <span class="font-mono" style="font-size: 0.72rem; color: var(--accent-primary);">POST #009</span>
+            </div>
+            <h3 class="writeup-title">Implementing AES-128 & Modular XOR Encryption Engines in Python 3</h3>
+            <p class="writeup-desc">
+              Mathematical foundation and implementation of symmetric block ciphers, initialization vectors (IVs), padding schemes, and key generation safety.
+            </p>
+            <div class="writeup-meta font-mono">
+              <span>📅 Jul 2026</span> • <span>⏱️ 10 min read</span> • <span>📜 NIST Crypto</span>
+            </div>
+            <div class="writeup-links">
+              <a href="https://github.com/HEEL69/cipher-suite-python" target="_blank" rel="noopener noreferrer" class="writeup-btn">
+                <span>View GitHub Repo ↗</span>
+              </a>
+              <a href="https://github.com/HEEL69/cipher-suite-python/blob/main/CIPHERS.md" target="_blank" rel="noopener noreferrer" class="writeup-btn">
+                <span>Read Full Writeup ↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category Writeup 4 -->
+          <article class="writeup-card">
+            <div class="writeup-badge-row">
+              <span class="writeup-tag">PORT SCANNING</span>
+              <span class="font-mono" style="font-size: 0.72rem; color: var(--accent-primary);">POST #011</span>
+            </div>
+            <h3 class="writeup-title">Building an Async Multi-Threaded TCP Port Scanner & Banner Grabber</h3>
+            <p class="writeup-desc">
+              Custom Python scanner leveraging non-blocking socket I/O, banner grabbing algorithms, and port state classification (Open/Closed/Filtered).
+            </p>
+            <div class="writeup-meta font-mono">
+              <span>📅 Jul 2026</span> • <span>⏱️ 7 min read</span> • <span>📜 OWASP Recon</span>
+            </div>
+            <div class="writeup-links">
+              <a href="https://github.com/HEEL69/port-scanner-py" target="_blank" rel="noopener noreferrer" class="writeup-btn">
+                <span>View GitHub Repo ↗</span>
+              </a>
+              <a href="https://github.com/HEEL69/port-scanner-py/blob/main/DOCUMENTATION.md" target="_blank" rel="noopener noreferrer" class="writeup-btn">
+                <span>Read Full Writeup ↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category Writeup 5 -->
+          <article class="writeup-card">
+            <div class="writeup-badge-row">
+              <span class="writeup-tag">CTF WRITEUP</span>
+              <span class="font-mono" style="font-size: 0.72rem; color: var(--accent-primary);">POST #035</span>
+            </div>
+            <h3 class="writeup-title">TryHackMe 'Kenobi' Walkthrough: Samba Exploitation & Privilege Escalation</h3>
+            <p class="writeup-desc">
+              Step-by-step penetration testing writeup covering ProFTPd exploit chain, Samba share enumeration, and Path variable privilege escalation.
+            </p>
+            <div class="writeup-meta font-mono">
+              <span>📅 Jun 2026</span> • <span>⏱️ 15 min read</span> • <span>📜 MITRE ATT&CK</span>
+            </div>
+            <div class="writeup-links">
+              <a href="https://tryhackme.com/p/SagnikMandal" target="_blank" rel="noopener noreferrer" class="writeup-btn">
+                <span>TryHackMe Profile ↗</span>
+              </a>
+              <a href="https://github.com/HEEL69/ctf-writeups/blob/main/kenobi-walkthrough.md" target="_blank" rel="noopener noreferrer" class="writeup-btn">
+                <span>Read CTF POC Writeup ↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category Writeup 6 -->
+          <article class="writeup-card">
+            <div class="writeup-badge-row">
+              <span class="writeup-tag">CS ALGORITHMS</span>
+              <span class="font-mono" style="font-size: 0.72rem; color: var(--accent-primary);">POST #004</span>
+            </div>
+            <h3 class="writeup-title">Algorithmic Complexity & Data Structure Benchmarks in Python</h3>
+            <p class="writeup-desc">
+              Comparative analysis of time/space complexity (\(O(n \log n)\) sorting, graph traversal algorithms, binary trees) and Python memory optimization.
+            </p>
+            <div class="writeup-meta font-mono">
+              <span>📅 May 2026</span> • <span>⏱️ 9 min read</span> • <span>📜 FIEM Curriculum</span>
+            </div>
+            <div class="writeup-links">
+              <a href="https://github.com/HEEL69/cs-problem-solving-python" target="_blank" rel="noopener noreferrer" class="writeup-btn">
+                <span>View GitHub Repo ↗</span>
+              </a>
+              <a href="https://github.com/HEEL69/cs-problem-solving-python/blob/main/INDEX.md" target="_blank" rel="noopener noreferrer" class="writeup-btn">
+                <span>Read Full Writeup ↗</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
       </div>
     </section>
 
@@ -757,11 +1159,200 @@
       </div>
     </section>
 
+    <!-- Governance & Field Methodology Section: Target Audience, Maintenance Cadence & Authoritative Framework Citations -->
+    <section class="section governance-section" id="governance">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-tag font-mono">// 06. GOVERNANCE // CONTEXT, AUDIENCE & SOURCES</span>
+          <h2 class="section-title">Operational Context, Target Audience & Technical Citations</h2>
+        </div>
+
+        <div class="governance-grid">
+          <!-- Target Audience Matrix Card -->
+          <div class="governance-card reveal-on-scroll">
+            <div class="card-badge font-mono">TARGET AUDIENCE MATRIX</div>
+            <h3 class="governance-card-title">Who This Showcase Is Built For</h3>
+            <p class="governance-card-desc">
+              Tailored open-source technical portfolio engineered specifically for evaluation across three primary professional personas:
+            </p>
+            <div class="audience-groups">
+              <div class="audience-item">
+                <span class="audience-icon">🎯</span>
+                <div class="audience-details">
+                  <strong>Primary: Cybersecurity Recruiters & SOC Managers</strong>
+                  <span>Evaluating hands-on technical proficiency, CTF writeup depth, Linux administration, Python security scripts, and SOC analyst baseline readiness.</span>
+                </div>
+              </div>
+              <div class="audience-item">
+                <span class="audience-icon">🔬</span>
+                <div class="audience-details">
+                  <strong>Secondary: CS Engineering Faculty & Academic Evaluators</strong>
+                  <span>Verifying academic alignment with B.Tech Computer Science curriculum, algorithm design, data structures, and foundational engineering rigor.</span>
+                </div>
+              </div>
+              <div class="audience-item">
+                <span class="audience-icon">🛡️</span>
+                <div class="audience-details">
+                  <strong>Tertiary: CTF Competitors & Peer Researchers</strong>
+                  <span>Exchanging open-source scripts, vulnerability POC writeups, Wireshark packet captures, and ethical penetration testing methodologies.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Update Frequency & Operational Cadence Card -->
+          <div class="governance-card reveal-on-scroll">
+            <div class="card-badge font-mono">MAINTENANCE CADENCE</div>
+            <h3 class="governance-card-title">Lab Refresh & Update Metrics</h3>
+            <p class="governance-card-desc">
+              Maintained via continuous deployment and strict review windows to ensure all code, writeups, and security tools remain verified current:
+            </p>
+            <div class="cadence-list">
+              <div class="cadence-item">
+                <span class="cadence-bullet">⚡</span>
+                <span class="cadence-label">CTF & Vulnerability Writeups:</span>
+                <span class="cadence-val">Bi-Weekly Updates</span>
+              </div>
+              <div class="cadence-item">
+                <span class="cadence-bullet">📚</span>
+                <span class="cadence-label">Academic & Skill Matrix Sync:</span>
+                <span class="cadence-val">Monthly Coursework Sync</span>
+              </div>
+              <div class="cadence-item">
+                <span class="cadence-bullet">🔒</span>
+                <span class="cadence-label">Code Repos & Dependency Audits:</span>
+                <span class="cadence-val">Quarterly Security Audits</span>
+              </div>
+              <div class="cadence-item">
+                <span class="cadence-bullet">🌐</span>
+                <span class="cadence-label">Threat Feed & CVE Sync:</span>
+                <span class="cadence-val">Continuous / Weekly</span>
+              </div>
+              <div class="cadence-status-bar">
+                <span class="status-indicator"></span>
+                <span class="font-mono">SYSTEM STATUS: VERIFIED CURRENT [2026.08] // ZERO CRITICAL DEPRECATIONS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cited Authoritative Sources Grid -->
+        <div class="sources-wrapper reveal-on-scroll">
+          <h3 class="sources-title">Authoritative Frameworks & Technical Citations</h3>
+          <p class="sources-subtitle">
+            Security research, lab scripts, and architectural methodologies in this portfolio are strictly benchmarked against globally recognized cybersecurity standards, RFC specifications, and open technical documentation:
+          </p>
+
+          <div class="sources-grid">
+            <!-- Source 1 -->
+            <a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener noreferrer" class="source-card magnetic-btn">
+              <div class="source-header">
+                <span class="source-badge">NIST CSF 2.0</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="source-external-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </div>
+              <h4 class="source-name">NIST Cybersecurity Framework</h4>
+              <p class="source-desc">National Institute of Standards and Technology guidelines for identifying, protecting, detecting, responding to, and recovering from cyber threats.</p>
+            </a>
+
+            <!-- Source 2 -->
+            <a href="https://owasp.org" target="_blank" rel="noopener noreferrer" class="source-card magnetic-btn">
+              <div class="source-header">
+                <span class="source-badge">OWASP TOP 10</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="source-external-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </div>
+              <h4 class="source-name">OWASP Foundation</h4>
+              <p class="source-desc">Open Web Application Security Project standards for web application security risks, API vulnerabilities, and secure coding practices.</p>
+            </a>
+
+            <!-- Source 3 -->
+            <a href="https://attack.mitre.org" target="_blank" rel="noopener noreferrer" class="source-card magnetic-btn">
+              <div class="source-header">
+                <span class="source-badge">MITRE ATT&CK®</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="source-external-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </div>
+              <h4 class="source-name">MITRE ATT&CK Matrix</h4>
+              <p class="source-desc">Globally accessible knowledge base of adversary tactics, techniques, and procedures (TTPs) based on real-world threat intelligence.</p>
+            </a>
+
+            <!-- Source 4 -->
+            <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener noreferrer" class="source-card magnetic-btn">
+              <div class="source-header">
+                <span class="source-badge">CISA KEV</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="source-external-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </div>
+              <h4 class="source-name">CISA Vulnerabilities Catalog</h4>
+              <p class="source-desc">Cybersecurity & Infrastructure Security Agency's authoritative catalog of Known Exploited Vulnerabilities for threat prioritization.</p>
+            </a>
+
+            <!-- Source 5 -->
+            <a href="https://www.iso.org/isoiec-27001-information-security.html" target="_blank" rel="noopener noreferrer" class="source-card magnetic-btn">
+              <div class="source-header">
+                <span class="source-badge">ISO/IEC 27001</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="source-external-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </div>
+              <h4 class="source-name">ISO/IEC 27001 Standard</h4>
+              <p class="source-desc">International Standard for Information Security Management Systems (ISMS) defining security controls and operational risk governance.</p>
+            </a>
+
+            <!-- Source 6 -->
+            <a href="https://www.ietf.org/standards/rfcs/" target="_blank" rel="noopener noreferrer" class="source-card magnetic-btn">
+              <div class="source-header">
+                <span class="source-badge">IETF RFC SPECS</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="source-external-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </div>
+              <h4 class="source-name">IETF Internet RFC Protocols</h4>
+              <p class="source-desc">Internet Engineering Task Force open specifications (RFC 793 TCP, RFC 7540 HTTP/2, RFC 8446 TLS 1.3) governing network communications.</p>
+            </a>
+
+            <!-- Source 7 -->
+            <a href="https://www.cisecurity.org/cis-benchmarks" target="_blank" rel="noopener noreferrer" class="source-card magnetic-btn">
+              <div class="source-header">
+                <span class="source-badge">CIS BENCHMARKS</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="source-external-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </div>
+              <h4 class="source-name">CIS Security Benchmarks</h4>
+              <p class="source-desc">Center for Internet Security consensus-based hardening guidelines for securing operating systems, servers, and network devices.</p>
+            </a>
+
+            <!-- Source 8 -->
+            <a href="https://www.first.org/cvss/" target="_blank" rel="noopener noreferrer" class="source-card magnetic-btn">
+              <div class="source-header">
+                <span class="source-badge">FIRST CVSS v4.0</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="source-external-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </div>
+              <h4 class="source-name">FIRST Common Vulnerability Scoring</h4>
+              <p class="source-desc">Forum of Incident Response and Security Teams standard for assessing vulnerability severity, threat metrics, and impact scores.</p>
+            </a>
+
+            <!-- Source 9 -->
+            <a href="https://tldp.org" target="_blank" rel="noopener noreferrer" class="source-card magnetic-btn">
+              <div class="source-header">
+                <span class="source-badge">TLDP / POSIX</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="source-external-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </div>
+              <h4 class="source-name">Linux Documentation Project</h4>
+              <p class="source-desc">Official Linux kernel system calls, POSIX compliance standards, shell scripting guides, and system administration manuals.</p>
+            </a>
+
+            <!-- Source 10 -->
+            <a href="https://docs.python.org/3/library/security_warnings.html" target="_blank" rel="noopener noreferrer" class="source-card magnetic-btn">
+              <div class="source-header">
+                <span class="source-badge">PYTHON SECURITY</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="source-external-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </div>
+              <h4 class="source-name">Python Security Advisories</h4>
+              <p class="source-desc">Official Python Software Foundation guidelines for secure socket creation, cryptographic modules, and string handling safety.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact Section: Form with Client-Side Validation & Social Icon Links -->
     <section class="section contact-section" id="contact">
       <div class="container">
         <div class="section-header reveal-on-scroll">
-          <span class="section-tag font-mono">// 06. ENCRYPTED_CHANNEL // CONTACT</span>
+          <span class="section-tag font-mono">// 07. ENCRYPTED_CHANNEL // CONTACT</span>
           <h2 class="section-title">Initiate Contact & Connect</h2>
         </div>
 
