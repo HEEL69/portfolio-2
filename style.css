@@ -2457,13 +2457,25 @@ body.light-theme .moon-icon { display: none; }
    ========================================================================== */
 @media (max-width: 1024px) {
   .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .landing-grid { grid-template-columns: 1fr; gap: 2rem; }
   .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .skills-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+  .landing-metrics-block { grid-template-columns: 1fr; gap: 1.2rem; }
+  .landing-quickhub-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
   /* Prevent horizontal overflow scrolling */
-  body { overflow-x: hidden; }
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  .container {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
 
   /* Mobile Navigation Menu Drawer */
   .hamburger-btn { display: flex; }
@@ -2491,9 +2503,9 @@ body.light-theme .moon-icon { display: none; }
 
   /* Hero Section Mobile Scaling */
   .hero-section { padding-top: calc(var(--header-height) + 1.5rem); padding-bottom: 3rem; }
-  .hero-title { font-size: clamp(2.2rem, 7vw, 3.2rem); }
-  .hero-subtitle { font-size: 1.15rem; min-height: 2.4rem; }
-  .hero-pitch { font-size: 0.98rem; }
+  .hero-title { font-size: clamp(2.1rem, 6.5vw, 3rem); }
+  .hero-subtitle { font-size: 1.1rem; min-height: 2.4rem; }
+  .hero-pitch { font-size: 0.95rem; line-height: 1.55; }
 
   .hero-cta-group {
     flex-direction: column;
@@ -2510,8 +2522,56 @@ body.light-theme .moon-icon { display: none; }
   }
 
   .hero-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+  }
+
+  .stat-card {
+    padding: 0.8rem 0.5rem;
+  }
+
+  .stat-number-wrapper {
+    font-size: 1.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+  }
+
+  /* Landing Hub & Metric Block Responsive Grids */
+  .landing-grid {
     grid-template-columns: 1fr;
-    gap: 0.8rem;
+    gap: 1.8rem;
+  }
+
+  .landing-metrics-block {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .landing-quickhub-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .landing-metric-card, .landing-hub-tile {
+    width: 100%;
+  }
+
+  /* Executive Summary & Pillars Grid Mobile Layout */
+  .pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .executive-summary-card {
+    padding: 1.4rem 1.1rem;
+  }
+
+  /* Achievements / Milestones Mobile Grid */
+  .achievements-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
 
   /* Interactive Terminal & TRY THIS Callout on Mobile */
@@ -2521,23 +2581,29 @@ body.light-theme .moon-icon { display: none; }
   }
 
   .try-hint-badge {
-    font-size: 1rem;
-    padding: 0.45rem 0.9rem;
+    font-size: 0.92rem;
+    padding: 0.45rem 0.85rem;
   }
 
   .try-hint-arrow {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
   }
 
   .terminal-body {
-    padding: 1rem;
-    max-height: 300px;
+    padding: 0.9rem;
+    max-height: 280px;
+    font-size: 0.82rem;
+  }
+
+  .cmd-chips-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   .cmd-chip {
-    padding: 0.5rem 0.8rem;
+    padding: 0.55rem 0.85rem;
     font-size: 0.8rem;
-    min-height: 38px;
+    min-height: 42px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -2550,9 +2616,24 @@ body.light-theme .moon-icon { display: none; }
     font-size: 16px !important;
   }
 
-  /* Section 04 Mobile Marquee & Card Visibility Fixes */
+  /* Projects Section Grid & Category Index Writeups */
   .projects-section {
     padding: 3.5rem 0;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .topic-writeups-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .credentials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
 
   .projects-container-relative {
@@ -2625,16 +2706,19 @@ body.light-theme .moon-icon { display: none; }
   .timeline-left .timeline-dot, .timeline-right .timeline-dot { left: 13px; right: auto; }
 
   /* Mobile Contact Form */
-  .contact-form-wrapper { padding: 1.8rem 1.2rem; }
+  .contact-form-wrapper { padding: 1.6rem 1.1rem; }
+  .btn-full { width: 100%; min-height: 48px; }
+
   .footer-container { flex-direction: column; gap: 1.2rem; text-align: center; }
 }
 
 @media (max-width: 480px) {
-  .container { padding: 0 1rem; }
-  .hero-title { font-size: 1.95rem; }
-  .hero-subtitle { font-size: 1.05rem; }
-  .try-hint-arrow { font-size: 1.3rem; }
-  .about-glass-card { padding: 1.8rem 1.2rem; }
+  .container { padding-left: 1rem; padding-right: 1rem; }
+  .hero-title { font-size: 1.85rem; }
+  .hero-subtitle { font-size: 1rem; }
+  .hero-stats-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+  .try-hint-arrow { font-size: 1.2rem; }
+  .about-glass-card { padding: 1.6rem 1.1rem; }
   .avatar-photo-frame { width: 130px; height: 130px; }
   .marquee-card { width: 270px !important; }
   .back-to-top-btn { bottom: 1.2rem; right: 1.2rem; }
