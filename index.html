@@ -120,6 +120,11 @@
       </nav>
 
       <div class="nav-actions">
+        <!-- Interactive Terminal CLI Modal Launcher -->
+        <button id="terminal-launcher-btn" class="terminal-launcher-btn font-mono" aria-label="Open Interactive CLI Terminal" title="Launch Interactive Terminal Shell">
+          &gt;_ CLI
+        </button>
+
         <!-- In-Memory Light/Dark Theme Switcher Button -->
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light or dark color theme">
           <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -201,49 +206,24 @@
             </div>
           </div>
 
-          <!-- Interactive Terminal CLI Window Column with Animated Extra-Large "TRY THIS ↴" Callout Arrow & Clickable Command Chips -->
-          <div class="hero-terminal-col">
-            
-            <!-- Animated Arrow Callout Indicator -->
-            <div class="terminal-try-hint reveal-on-scroll" id="terminal-hint" title="Click to focus terminal prompt">
-              <span class="try-hint-badge">⚡ INTERACTIVE CLI</span>
-              <span class="try-hint-arrow">TRY THIS ↴</span>
-            </div>
-
-            <div class="terminal-window reveal-on-scroll" id="terminal-window-el">
-              <div class="terminal-header">
-                <div class="terminal-dots">
-                  <span class="dot dot-red"></span>
-                  <span class="dot dot-yellow"></span>
-                  <span class="dot dot-green"></span>
-                </div>
-                <span class="terminal-title">root@sagnik-sec-shell:~</span>
+          <!-- Hero Column 2: Candidate Profile Card with Secondary Terminal Trigger -->
+          <div class="hero-profile-col reveal-on-scroll">
+            <div class="landing-profile-card hero-profile-card">
+              <div class="landing-avatar-frame">
+                <img src="sagnik.jpg" alt="Sagnik Mandal Profile Photo" class="landing-avatar-img">
               </div>
-              <div class="terminal-body" id="terminal-body">
-                <div class="terminal-line text-cyber-green">[SYSTEM BOOT COMPLETE // SHELL INITIALIZED]</div>
-                <div class="terminal-line text-muted">Click any command chip below or type 1-letter shortcuts (h, a, s, p, c, w):</div>
-                
-                <!-- Quick Clickable Command Chips for Instant One-Click Execution -->
-                <div class="terminal-quick-cmds">
-                  <button type="button" class="cmd-chip" data-cmd="help">help [h]</button>
-                  <button type="button" class="cmd-chip" data-cmd="purpose">purpose [f]</button>
-                  <button type="button" class="cmd-chip" data-cmd="about">about [a]</button>
-                  <button type="button" class="cmd-chip" data-cmd="skills">skills [s]</button>
-                  <button type="button" class="cmd-chip" data-cmd="projects">projects [p]</button>
-                  <button type="button" class="cmd-chip" data-cmd="sources">sources [src]</button>
-                  <button type="button" class="cmd-chip" data-cmd="achievements">achievements [m]</button>
-                  <button type="button" class="cmd-chip" data-cmd="contact">contact [c]</button>
-                  <button type="button" class="cmd-chip" data-cmd="whoami">whoami [w]</button>
-                  <button type="button" class="cmd-chip" data-cmd="clear">clear [cls]</button>
-                </div>
-
-                <!-- Dynamic Logs Container -->
-                <div id="terminal-logs"></div>
-
-                <div class="terminal-input-line">
-                  <span class="terminal-prompt">root@sagnik-sec:~$</span>
-                  <input type="text" id="terminal-input" class="terminal-input" placeholder="click chip or type 'h'..." autocomplete="off">
-                </div>
+              <h3 class="landing-name">SAGNIK MANDAL</h3>
+              <p class="landing-title-sub">[B.TECH CSE @ FIEM 2026–2030]</p>
+              <div class="landing-tags-row">
+                <span class="landing-tag-chip">LINUX SYSADMIN</span>
+                <span class="landing-tag-chip">PYTHON SCRIPTING</span>
+                <span class="landing-tag-chip">PACKET ANALYSIS</span>
+                <span class="landing-tag-chip">TRYHACKME TOP 10%</span>
+              </div>
+              <div class="hero-terminal-trigger-box">
+                <button type="button" class="btn btn-outline btn-terminal-launch open-terminal-trigger" id="hero-terminal-trigger" title="Launch Interactive Terminal Shell">
+                  <span>&gt;_ Launch Interactive CLI</span>
+                </button>
               </div>
             </div>
           </div>
@@ -1377,7 +1357,45 @@
         </div>
       </div>
     </section>
-  </main>
+  <!-- Interactive Terminal CLI Modal Overlay (Secondary Opt-In Feature) -->
+  <div id="terminal-modal" class="terminal-modal-overlay" aria-label="Interactive Terminal Shell" hidden>
+    <div class="terminal-modal-container">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="terminal-title">sagnik-portfolio-shell</span>
+        <button type="button" class="terminal-close-btn" id="terminal-modal-close" aria-label="Close Terminal">&times;</button>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-line text-cyber-green">[PORTFOLIO SHELL INITIALIZED]</div>
+        <div class="terminal-line text-muted">Type a command or click a chip below:</div>
+        
+        <!-- Quick Clickable Command Chips -->
+        <div class="terminal-quick-cmds">
+          <button type="button" class="cmd-chip" data-cmd="help">help</button>
+          <button type="button" class="cmd-chip" data-cmd="about">about</button>
+          <button type="button" class="cmd-chip" data-cmd="skills">skills</button>
+          <button type="button" class="cmd-chip" data-cmd="projects">projects</button>
+          <button type="button" class="cmd-chip" data-cmd="sources">sources</button>
+          <button type="button" class="cmd-chip" data-cmd="achievements">achievements</button>
+          <button type="button" class="cmd-chip" data-cmd="contact">contact</button>
+          <button type="button" class="cmd-chip" data-cmd="whoami">whoami</button>
+          <button type="button" class="cmd-chip" data-cmd="clear">clear</button>
+        </div>
+
+        <!-- Dynamic Logs Container -->
+        <div id="terminal-logs"></div>
+
+        <div class="terminal-input-line">
+          <span class="terminal-prompt">sagnik@portfolio:~$</span>
+          <input type="text" id="terminal-input" class="terminal-input" placeholder="click chip or type 'help'..." autocomplete="off">
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer Section -->
   <footer class="footer">

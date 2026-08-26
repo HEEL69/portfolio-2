@@ -12,6 +12,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initMobileNav();
+  initTerminalModal();
   initMatrixRain();
   initProjectsMatrixRain();
   initCustomCursor();
@@ -409,14 +410,61 @@ function initTypingEffect() {
 
 
 /* ==========================================================================
-   7. INTERACTIVE TERMINAL CLI WINDOW WITH SYSTEM REBOOT RESET ON CLEAR
+   6B. INTERACTIVE TERMINAL MODAL OVERLAY CONTROLLER
+   ========================================================================== */
+function initTerminalModal() {
+  const modal = document.getElementById('terminal-modal');
+  const openTriggers = document.querySelectorAll('.open-terminal-trigger, #terminal-launcher-btn, #hero-terminal-trigger');
+  const closeBtn = document.getElementById('terminal-modal-close');
+  const terminalInput = document.getElementById('terminal-input');
+
+  if (!modal) return;
+
+  const openModal = () => {
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    if (terminalInput) {
+      setTimeout(() => terminalInput.focus(), 150);
+    }
+  };
+
+  const closeModal = () => {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  };
+
+  openTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hidden) {
+      closeModal();
+    }
+  });
+}
+
+
+/* ==========================================================================
+   7. INTERACTIVE TERMINAL CLI SHELL WITH CLEAN PROFESSIONAL RESPONSES
    ========================================================================== */
 function initInteractiveTerminal() {
   const terminalInput = document.getElementById('terminal-input');
   const terminalBody = document.getElementById('terminal-body');
   const terminalLogs = document.getElementById('terminal-logs');
-  const terminalHint = document.getElementById('terminal-hint');
-  const terminalWindowEl = document.getElementById('terminal-window-el');
   const cmdChips = document.querySelectorAll('.cmd-chip');
 
   if (!terminalInput || !terminalBody) return;
@@ -444,14 +492,6 @@ function initInteractiveTerminal() {
     'citations': 'sources',
     'sources': 'sources',
 
-    'aud': 'audience',
-    'target': 'audience',
-    'audience': 'audience',
-
-    'freq': 'cadence',
-    'updates': 'cadence',
-    'cadence': 'cadence',
-
     'm': 'achievements',
     'ach': 'achievements',
     'achievements': 'achievements',
@@ -471,8 +511,6 @@ function initInteractiveTerminal() {
 
     'info': 'info',
     'i': 'info',
-    'portal': 'info',
-    'landing': 'info',
 
     'cls': 'clear',
     'l': 'clear',
@@ -480,23 +518,6 @@ function initInteractiveTerminal() {
   };
 
   const validCommands = ['help', 'info', 'purpose', 'about', 'skills', 'projects', 'sources', 'achievements', 'contact', 'whoami', 'clear'];
-
-  // Make "TRY THIS ↴" hint button focus the terminal prompt on desktop or execute help on mobile without virtual keyboard popup
-  if (terminalHint) {
-    terminalHint.addEventListener('click', () => {
-      const isMobile = window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 768;
-      if (isMobile) {
-        executeCommand('help');
-        terminalInput.blur();
-      } else {
-        terminalInput.focus();
-      }
-      if (terminalWindowEl) {
-        terminalWindowEl.classList.add('focused');
-        setTimeout(() => terminalWindowEl.classList.remove('focused'), 2000);
-      }
-    });
-  }
 
   // Make One-Click Command Chips execute commands instantly
   cmdChips.forEach((chip) => {
@@ -513,14 +534,6 @@ function initInteractiveTerminal() {
         }
       }
     });
-  });
-
-  terminalInput.addEventListener('focus', () => {
-    if (terminalWindowEl) terminalWindowEl.classList.add('focused');
-  });
-
-  terminalInput.addEventListener('blur', () => {
-    if (terminalWindowEl) terminalWindowEl.classList.remove('focused');
   });
 
   // Handle Tab Auto-Completion & Enter Execution
@@ -547,13 +560,13 @@ function initInteractiveTerminal() {
   function executeCommand(command, rawInput = '') {
     if (command === 'clear') {
       if (terminalLogs) terminalLogs.innerHTML = '';
-      appendTerminalLine('[SYSTEM REBOOT // TERMINAL BUFFER RESET COMPLETE]', 'text-cyber-green terminal-output-glow');
+      appendTerminalLine('[TERMINAL BUFFER CLEARED]', 'text-cyber-green terminal-output-glow');
       terminalBody.scrollTop = terminalBody.scrollHeight;
       return;
     }
 
     const displayTag = rawInput && rawInput !== command ? `${rawInput} → ${command}` : command;
-    appendTerminalLine(`root@sagnik-sec:~$ ${displayTag}`, 'terminal-prompt');
+    appendTerminalLine(`sagnik@portfolio:~$ ${displayTag}`, 'terminal-prompt');
 
     switch (command) {
       case 'help':
