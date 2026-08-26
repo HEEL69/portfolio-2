@@ -1283,15 +1283,180 @@ body.light-theme .moon-icon { display: none; }
   transform: translateY(-2px);
 }
 
-.cred-card {
+/* Enlarged & Featured Professional Certifications Showcase Section */
+.credentials-block-enlarged {
+  margin-top: 4rem;
+  padding: 2.5rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 255, 102, 0.15);
   position: relative;
   overflow: hidden;
 }
 
-.cred-card:hover {
-  border-color: var(--accent-danger) !important;
-  box-shadow: var(--shadow-neon-red) !important;
-  transform: translateY(-4px) !important;
+.credentials-block-enlarged::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-primary));
+}
+
+.credentials-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.credentials-title-enlarged {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--accent-primary);
+  letter-spacing: -0.5px;
+}
+
+.credentials-subtitle-tag {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent-primary);
+  background: var(--accent-glow);
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color-muted);
+}
+
+.credentials-grid-enlarged {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+.cred-card-enlarged {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color-muted);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-out-cubic), border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+.cred-card-enlarged:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--accent-danger);
+  box-shadow: var(--shadow-neon-red), 0 20px 40px rgba(0, 0, 0, 0.9);
+}
+
+.cred-badge-frame {
+  width: 100%;
+  height: 190px;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-color-muted);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s var(--ease-out-cubic), border-color 0.3s ease;
+}
+
+.cred-card-enlarged:hover .cred-badge-frame {
+  border-color: var(--accent-danger);
+  transform: scale(1.03);
+}
+
+.cred-badge-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+  transition: transform 0.4s var(--ease-out-cubic);
+}
+
+.cred-card-enlarged:hover .cred-badge-img {
+  transform: scale(1.08);
+}
+
+.cred-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.cred-company-tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  background: var(--accent-glow);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color-muted);
+  text-transform: uppercase;
+}
+
+.cred-card-enlarged:hover .cred-company-tag {
+  color: var(--accent-danger);
+  background: var(--accent-danger-glow);
+  border-color: var(--accent-danger);
+}
+
+.cred-year-tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.cred-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.cred-card-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.cred-card-footer {
+  border-top: 1px solid var(--border-color-muted);
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge-status-pill {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+}
+
+.cred-card-enlarged:hover .badge-status-pill {
+  color: var(--accent-danger);
 }
 
 
