@@ -99,7 +99,7 @@ function initMatrixRain() {
   });
 
   const render = () => {
-    ctx.fillStyle = 'rgba(2, 4, 8, 0.08)';
+    ctx.fillStyle = 'rgba(2, 4, 8, 0.04)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < rainDrops.length; i++) {

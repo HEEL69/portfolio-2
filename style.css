@@ -12,10 +12,10 @@
    WHY:  Ensures flawless display, navigation, card visibility, and marquee motion.
    ========================================================================== */
 :root {
-  /* Crisp Monochromatic Cyber Palette */
+  /* Crisp Translucent Cyber Palette with Glassmorphism */
   --bg-primary: #020408;           /* Deep Terminal Void Black */
-  --bg-surface: #090e17;           /* High-Contrast Obsidian Surface */
-  --bg-surface-elevated: #101726;  /* Elevated Cyber Surface */
+  --bg-surface: rgba(4, 9, 18, 0.35);           /* Translucent Obsidian Glass */
+  --bg-surface-elevated: rgba(8, 15, 28, 0.45);  /* Translucent Cyber Glass Surface */
   
   /* Solid Terminal Accents */
   --accent-primary: #00ff66;       /* High-Voltage Matrix Green */
@@ -61,8 +61,8 @@
 /* Light Theme Variable Overrides */
 body.light-theme {
   --bg-primary: #f0f4f8;
-  --bg-surface: #ffffff;
-  --bg-surface-elevated: #e2e8f0;
+  --bg-surface: rgba(255, 255, 255, 0.75);
+  --bg-surface-elevated: rgba(226, 232, 240, 0.8);
   --accent-primary: #009933;
   --accent-glow: rgba(0, 153, 51, 0.12);
   --accent-secondary: #0284c7;
@@ -101,7 +101,7 @@ body {
   transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
-/* Reverted Baseline Matrix Code Rain Canvas Layer */
+/* Vivid Background Matrix Code Rain Canvas Layer */
 #matrix-canvas {
   position: fixed;
   top: 0;
@@ -110,7 +110,7 @@ body {
   height: 100vh;
   pointer-events: none;
   z-index: -2;
-  opacity: 0.12;
+  opacity: 0.6;
 }
 
 /* Sharp Tactical Grid Overlay */
@@ -149,6 +149,44 @@ body::before {
   pointer-events: none;
   z-index: 9990;
   opacity: 0.3;
+}
+
+/* Universal Glassmorphic Transparency Override for Continuous Matrix Background Visibility */
+.section,
+.hero-section,
+.landing-section,
+.info-section,
+.about-section,
+.achievements-section,
+.skills-section,
+.projects-section,
+.experience-section,
+.governance-section,
+.contact-section {
+  background: transparent !important;
+}
+
+.landing-profile-card,
+.landing-metric-card,
+.landing-hub-tile,
+.executive-summary-card,
+.about-glass-card,
+.stat-card,
+.highlight-item,
+.achievement-card,
+.credentials-block-enlarged,
+.cred-card-enlarged,
+.governance-card,
+.source-card,
+.info-card,
+.contact-form-wrapper,
+.writeup-card,
+.project-card,
+.timeline-content,
+.cred-card {
+  background: rgba(4, 9, 18, 0.4) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
 }
 
 /* Container Wrapper */
@@ -940,7 +978,7 @@ body.light-theme .moon-icon { display: none; }
    ========================================================================== */
 .landing-section {
   padding: 5rem 0;
-  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-surface) 50%, var(--bg-primary) 100%);
+  background: transparent;
   position: relative;
   border-bottom: 1px solid var(--border-color-muted);
 }
@@ -961,6 +999,8 @@ body.light-theme .moon-icon { display: none; }
 
 .landing-profile-card {
   background: var(--bg-surface-elevated);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
