@@ -504,12 +504,12 @@ function initInteractiveTerminal() {
         break;
 
       case 'skills':
-        appendTerminalLine('SKILL VECTORS & PROFICIENCY:', 'terminal-output-glow');
-        appendTerminalLine('  1. CS Fundamentals & Algorithms (80%)', 'terminal-output-glow');
-        appendTerminalLine('  2. Linux (Ubuntu & Kali Admin)  (75%)', 'terminal-output-glow');
-        appendTerminalLine('  3. Cybersecurity & Threat Defense (75%)', 'terminal-output-glow');
-        appendTerminalLine('  4. Python Automation & Sockets    (70%)', 'terminal-output-glow');
-        appendTerminalLine('  5. TCP/IP Network Sniffing        (65%)', 'terminal-output-glow');
+        appendTerminalLine('SKILL VECTORS & ACTIVE DEVELOPMENT STATUS:', 'terminal-output-glow');
+        appendTerminalLine('  1. CS Fundamentals & Algorithms [B.TECH CSE // LEARNING...]', 'terminal-output-glow');
+        appendTerminalLine('  2. Linux (Ubuntu & Kali Admin)  [ACTIVE LAB HARDENING]', 'terminal-output-glow');
+        appendTerminalLine('  3. Cybersecurity Fundamentals   [CONTINUOUS PRACTICE]', 'terminal-output-glow');
+        appendTerminalLine('  4. Python Automation & Sockets  [SCRIPT AUTOMATION]', 'terminal-output-glow');
+        appendTerminalLine('  5. TCP/IP Network Sniffing      [PACKET ANALYSIS & RFCS]', 'terminal-output-glow');
         break;
 
       case 'projects':
