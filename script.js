@@ -396,12 +396,15 @@ function initInteractiveTerminal() {
     'summary': 'purpose',
     'purpose': 'purpose',
 
+    'landing': 'landing',
+    'portal': 'landing',
+
     'cls': 'clear',
     'l': 'clear',
     'clear': 'clear'
   };
 
-  const validCommands = ['help', 'purpose', 'about', 'skills', 'projects', 'sources', 'audience', 'cadence', 'achievements', 'contact', 'whoami', 'clear'];
+  const validCommands = ['help', 'landing', 'purpose', 'about', 'skills', 'projects', 'sources', 'audience', 'cadence', 'achievements', 'contact', 'whoami', 'clear'];
 
   // Make "TRY THIS ↴" hint button focus the terminal prompt instantly
   if (terminalHint) {
@@ -469,6 +472,7 @@ function initInteractiveTerminal() {
     switch (command) {
       case 'help':
         appendTerminalLine('AVAILABLE COMMANDS & SHORTCUTS:', 'terminal-output-glow');
+        appendTerminalLine('  landing [portal]- Executive Candidate Command Portal & Key Metrics', 'terminal-output-glow');
         appendTerminalLine('  purpose [f]     - Executive summary of overall focus & content listings', 'terminal-output-glow');
         appendTerminalLine('  about [a]       - Display biography & credentials overview', 'terminal-output-glow');
         appendTerminalLine('  skills [s]      - List core competency vectors & tools', 'terminal-output-glow');
@@ -481,6 +485,14 @@ function initInteractiveTerminal() {
         appendTerminalLine('  whoami [w]      - Print current user identity & status', 'terminal-output-glow');
         appendTerminalLine('  clear [cls]     - Wipe terminal buffer & reboot shell', 'terminal-output-glow');
         appendTerminalLine('  Tip: Press Tab key to auto-complete commands!', 'text-muted');
+        break;
+
+      case 'landing':
+        appendTerminalLine('EXECUTIVE LANDING PORTAL & COMMAND OVERVIEW:', 'terminal-output-glow');
+        appendTerminalLine('  Candidate : Sagnik Mandal | B.Tech CS Engineering Candidate @ FIEM', 'terminal-output-glow');
+        appendTerminalLine('  Rank      : TryHackMe Global Top 10% Defense Rank (50+ Machines Solved)', 'terminal-output-glow');
+        appendTerminalLine('  Credentials: Google Sec, Cisco TCP/IP, LPI Linux, THM Badge', 'terminal-output-glow');
+        appendTerminalLine('  Tooling   : 15+ Open-Source Python Security & Socket Scripts', 'text-cyber-green terminal-output-glow');
         break;
 
       case 'purpose':
